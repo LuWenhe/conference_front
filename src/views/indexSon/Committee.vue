@@ -1,5 +1,7 @@
 <template>
-  <div>Committee</div>
+  <div class="committee-box">
+    Committee
+  </div>
 </template>
 
 <script>

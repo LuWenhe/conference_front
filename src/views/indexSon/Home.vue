@@ -11,18 +11,31 @@
     <!-- 首页下半部分 -->
     <el-row>
       <!-- 会议介绍 -->
-      <el-row class="home-introduction">
-        <el-row class="home-introduction-title">
-          <span>About ICINC 2022</span>
-        </el-row>
+      <el-row>
+        <big-title :title="bigTitle[0]"></big-title>
         <el-row class="home-introduction-content">
-          <p>
-            2022 International Conference on Informatics, Networking and Computing (ICINC 2022)  will be held in Nanjing, China on October 14-16, 2022. The meeting will be on  Informatics, Networking and Computing, etc. The latest research achievements in the field of communication, from domestic and foreign institutions of higher learning, scientific research institutes, enterprises and institutions of experts, professors, scholars, engineers and other  provide a share professional experience, expand the professional network, face to face to new ideas and show the research results of the international platform, To discuss key challenges and research directions in this field, with a view to promoting the development and application of theories and technologies in this field in universities and enterprises, as well as establishing business or research contacts and seeking global partners for future undertakings.
-          </p>
-          <br>
-          <p>
-            The purpose of this conference is to provide an authoritative international exchange platform for researchers in related fields, so as to promote good academic exchanges among scholars in related fields. It also provides global partners to establish business and scientific cooperation around the world.
-          </p>
+          {{this.conferenceData.introduction}}
+        </el-row>
+      </el-row>
+      <!-- 会议时间 -->
+      <el-row>
+        <big-title :title="bigTitle[0]"></big-title>
+        <el-row class="home-introduction-content">
+          {{this.conferenceData.introduction}}
+        </el-row>
+      </el-row>
+      <!-- 关键人员 -->
+      <el-row>
+        <big-title :title="bigTitle[0]"></big-title>
+        <el-row class="home-introduction-content">
+          {{this.conferenceData.introduction}}
+        </el-row>
+      </el-row>
+      <!-- 关键人员 -->
+      <el-row>
+        <big-title :title="bigTitle[0]"></big-title>
+        <el-row class="home-introduction-content">
+          {{this.conferenceData.introduction}}
         </el-row>
       </el-row>
     </el-row>
@@ -34,14 +47,34 @@
 </template>
 
 <script>
+import BigTitle from "../../components/common/BigTitle"
 export default {
   name: "Home",
+  components: {BigTitle},
   data() {
     return {
       bannerList: [
         'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111845208.png',
         'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111658199.png'
-      ]
+      ],
+      bigTitle: ['About DSKE 2023'],
+      conferenceData:{
+        title: "About DSKE 2023",
+        introduction: "2022 International Conference on Informatics, " +
+          "Networking and Computing (ICINC 2022)  will be held in Nanjing, " +
+          "China on October 14-16, 2022. The meeting will be on  Informatics, " +
+          "Networking and Computing, etc. The latest research achievements " +
+          "in the field of communication, from domestic and foreign institutions " +
+          "of higher learning, scientific research institutes, enterprises and " +
+          "institutions of experts, professors, scholars, engineers and other " +
+          "provide a share professional experience, expand the professional network, " +
+          "face to face to new ideas and show the research results of the international " +
+          "platform, To discuss key challenges and research directions in this field, " +
+          "with a view to promoting the development and application of theories and " +
+          "technologies in this field in universities and enterprises, as well as " +
+          "establishing business or research contacts and seeking global partners " +
+          "for future undertakings."
+      }
     }
   }
 }
@@ -65,14 +98,21 @@ export default {
     margin: 0;
   }
 
-  .home-introduction-title {
+  .home-title {
     height: 50px;
     display: flex;
     align-items: center;
     background-color: rgba(7, 104, 172, 0.1);
   }
 
-  .home-introduction-title span {
+  .color-line {
+    width: 10px;
+    height: 50px;
+    background-color: rgba(31, 104, 172, 1);
+    border-radius: 2px;
+  }
+
+  .home-title span {
     font-size: 24px;
     font-weight: 500;
     margin-left: 20px;
@@ -84,12 +124,12 @@ export default {
     line-height: 24px;
     word-wrap: break-word;
     padding: 20px;
-    margin-top: 20px;
+    margin: 10px 0;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  }
-
-  .home-introduction-content p {
     text-align: justify;
     font-size: 16px;
   }
 </style>
+<script setup>
+import BigTitle from "../../components/common/BigTitle.vue";
+</script>
