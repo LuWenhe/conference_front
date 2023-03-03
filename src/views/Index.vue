@@ -1,10 +1,15 @@
 <template>
-  <el-container class="home-container">
+  <el-container class="index-container">
     <!-- 主页头部 -->
-    <el-header class="home-header">
-      <div class="head-img">
-        <img src="" alt="">
-      </div>
+    <el-header class="index-header">
+      <el-row class="index-top">
+        <el-row class="index-top-img">
+          <img src="https://fhk.ais.cn/cms/website/common/202207/350220701145230648.png" alt="">
+        </el-row>
+        <el-row class="index-top-title">
+          <span>2022 International Conference on Informatics, Networking and Computing (ICINC 2022)</span>
+        </el-row>
+      </el-row>
       <el-row>
         <el-menu
           :default-active="activeIndex"
@@ -41,20 +46,19 @@
       </el-row>
     </el-header>
     <!-- 主页内容 -->
-    <el-main class="home-main">
+    <el-main class="index-main">
       <router-view/>
     </el-main>
-
     <!-- 主页尾部 -->
-    <el-footer class="home-footer">
-
+    <el-footer class="index-footer">
+      <span>Copyright © 2022 | 2022 International Conference on Informatics, Networking and Computing (ICINC 2022)</span>
     </el-footer>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: "Index",
   data() {
     return {
       activeIndex: '1'
@@ -69,28 +73,50 @@ export default {
 </script>
 
 <style scoped>
-  .home-container {
+  .index-container {
     width: 60%;
     margin: 0 auto;
   }
 
-  .home-header {
+  .index-header {
     height: 100% !important;
     padding: 0;
   }
 
-  .head-img {
-    height: 160px;
-    background-color: aqua;
+  .index-logo {
+    height: 60px;
   }
 
-  .home-main {
-    height: 600px;
-    background-color: aquamarine;
+  .index-main {
+    height: 100% !important;
+    padding: 0;
+    margin-top: -1px;
   }
 
-  .home-footer {
-    height: 200px;
-    background-color: antiquewhite;
+  .index-footer {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+    color: #989898;
+    font-size: 12px;
+  }
+
+  .index-top {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .index-top-img img {
+    height: 60px;
+  }
+
+  .index-top-title{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 30px;
   }
 </style>
