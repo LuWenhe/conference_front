@@ -24,7 +24,11 @@
         router>
         <el-menu-item index="/home">Home</el-menu-item>
         <el-menu-item index="/committee">Committee</el-menu-item>
-        <el-menu-item index="/speakers">Speakers</el-menu-item>
+        <el-submenu index="3">
+          <template slot="title">Speakers</template>
+          <el-menu-item index="3-1">Keynote Speakers</el-menu-item>
+          <el-menu-item index="3-2">Invited Speakers</el-menu-item>
+        </el-submenu>
         <el-submenu index="4">
           <template slot="title">Papers</template>
           <el-menu-item index="/papers/cpf">Call For Papers</el-menu-item>
@@ -34,16 +38,16 @@
         </el-submenu>
         <el-submenu index="5">
           <template slot="title">Attendees</template>
-          <el-menu-item index="5-1">VISA</el-menu-item>
-          <el-menu-item index="5-2">Accommodation</el-menu-item>
-          <el-menu-item index="5-3">Schedule</el-menu-item>
+          <el-menu-item index="5-1">Accommodation</el-menu-item>
+          <el-menu-item index="5-2">Schedule</el-menu-item>
           <el-menu-item index="5-3">News</el-menu-item>
         </el-submenu>
+
         <el-menu-item index="6">Register</el-menu-item>
         <el-menu-item index="7">Venue</el-menu-item>
-        <el-menu-item index="8">History</el-menu-item>
-        <el-menu-item index="9">中文</el-menu-item>
-        <el-menu-item index="10">Contact</el-menu-item>
+        <el-menu-item index="8">Program</el-menu-item>
+        <el-menu-item index="9">Contact</el-menu-item>
+        <el-menu-item index="10">中文</el-menu-item>
       </el-menu>
     </el-row>
     <!-- 主页内容 -->
@@ -75,7 +79,7 @@ export default {
 
 <style scoped>
   .index-container {
-    width: 60%;
+    width: 65%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

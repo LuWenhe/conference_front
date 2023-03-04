@@ -1,43 +1,46 @@
 <template>
   <div class="home-box">
-    <!-- 首页上半部分 -->
+    <!-- 首页上半部分 轮播图-->
     <el-row>
       <el-carousel class="home-carousel" :interval="5000" arrow="always">
         <el-carousel-item v-for="(item, index) in bannerList" :key="index">
-          <img class="carousel-img" :src="item" alt="">
+          <img class="carousel-img" :src="'http://localhost:7070/' + item.picturePath"  alt="">
         </el-carousel-item>
       </el-carousel>
     </el-row>
     <!-- 首页下半部分 -->
     <el-row>
+
       <!-- 会议介绍 -->
-      <el-row>
-        <big-title :title="bigTitle[0]"></big-title>
-        <el-row class="home-introduction-content">
-          {{this.conferenceData.introduction}}
-        </el-row>
+      <el-row v-for="(item, index) in menuList" :key="index" class="liStylenone liPointer marb10" >
+        <big-title :title="bigTitle[0]">{{ item.name }}</big-title>
+        <el-card class="home-introduction-content">
+          <el-col>
+            <div v-html="this.new.content" class="ql-editor"></div>
+          </el-col>
+        </el-card>
       </el-row>
-      <!-- 会议时间 -->
-      <el-row>
-        <big-title :title="bigTitle[0]"></big-title>
-        <el-row class="home-introduction-content">
-          {{this.conferenceData.introduction}}
-        </el-row>
-      </el-row>
-      <!-- 关键人员 -->
-      <el-row>
-        <big-title :title="bigTitle[0]"></big-title>
-        <el-row class="home-introduction-content">
-          {{this.conferenceData.introduction}}
-        </el-row>
-      </el-row>
-      <!-- 关键人员 -->
-      <el-row>
-        <big-title :title="bigTitle[0]"></big-title>
-        <el-row class="home-introduction-content">
-          {{this.conferenceData.introduction}}
-        </el-row>
-      </el-row>
+<!--      &lt;!&ndash; 会议时间 &ndash;&gt;-->
+<!--      <el-row>-->
+<!--        <big-title :title="bigTitle[1]"></big-title>-->
+<!--        <el-row class="home-introduction-content">-->
+<!--          {{this.conferenceData.introduction}}-->
+<!--        </el-row>-->
+<!--      </el-row>-->
+<!--      &lt;!&ndash; 关键人员 &ndash;&gt;-->
+<!--      <el-row>-->
+<!--        <big-title :title="bigTitle[2]"></big-title>-->
+<!--        <el-row class="home-introduction-content">-->
+<!--          {{this.conferenceData.introduction}}-->
+<!--        </el-row>-->
+<!--      </el-row>-->
+<!--      &lt;!&ndash; 发表 &ndash;&gt;-->
+<!--      <el-row>-->
+<!--        <big-title :title="bigTitle[3]"></big-title>-->
+<!--        <el-row class="home-introduction-content">-->
+<!--          {{this.conferenceData.introduction}}-->
+<!--        </el-row>-->
+<!--      </el-row>-->
     </el-row>
     <!-- -->
     <el-row>
@@ -48,17 +51,22 @@
 
 <script>
 import BigTitle from "../../components/common/BigTitle"
+import { getNewsList , getnew} from '../../Api/api'
 export default {
   name: "Home",
   components: {BigTitle},
   data() {
     return {
       bannerList: [
-        'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111845208.png',
-        'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111658199.png'
+        // 'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111845208.png',
+        // 'https://fhk.ais.cn/cms/website/functional/pic/202208/328220809111658199.png'
       ],
-      bigTitle: ['About DSKE 2023'],
-      conferenceData:{
+      menuList: [],
+      newsList: [],
+      new: {}, //新闻对象
+      bigTitle: ['About DSKE 2023', 'Important Dates' ,'Keynote Speakers','Publication'],
+      // bigTitleid:['42', '43' ,'44','45'],
+      conferenceData: {
         title: "About DSKE 2023",
         introduction: "2022 International Conference on Informatics, " +
           "Networking and Computing (ICINC 2022)  will be held in Nanjing, " +
@@ -73,11 +81,86 @@ export default {
           "with a view to promoting the development and application of theories and " +
           "technologies in this field in universities and enterprises, as well as " +
           "establishing business or research contacts and seeking global partners " +
-          "for future undertakings."
+          "for future undertakings.",
       }
+    }
+  },
+  created() {
+    this.getnews()
+    // this.getnews1()
+  },
+  methods: {
+
+    getnews() {
+      const data = {
+        current: 1,
+        newsCategoryId: 45,
+        size: 3
+      }
+      getNewsList(data)
+        .then(res => {
+          console.log(res)
+          if (res.code == 200) {
+            this.bannerList = res.data.records
+
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        }),
+     //获取小标题id
+      getTitle() {
+        const data = 1
+        getMinTitle(data)
+          .then(res => {
+            // console.log(res);
+            if (res.code == 200) {
+              this.menuList = res.data
+              console.log(this.menuList)
+            }
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      },
+      getnews1(item) {
+      const data = {
+        current: 1,
+        newsCategoryId: item.id,
+        size: 5
+      }
+      getNewsList(data)
+        .then(res => {
+          // console.log(res);
+          if (res.code == 200) {
+            this.newsList = res.data.records
+            this.getalone(this.newsList[0].id)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        }),
+        //获取新闻内容,得到一个新闻对象
+        getalone(id)
+      {
+        const data = id
+        getnew(data)
+          .then(res => {
+            // console.log(res);
+            if (res.code == 200) {
+              this.new = res.data
+              console.log(this.new.content)  //在控制台输出信息
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+
     }
   }
 }
+
+
 </script>
 
 <style scoped>
