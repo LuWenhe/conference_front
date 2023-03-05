@@ -14,7 +14,7 @@
     <!-- 导航栏 -->
     <el-row>
       <el-menu
-        :default-active="activeIndex"
+        :default-active="$route.path"
         class="el-menu"
         mode="horizontal"
         @select="handleSelect"
@@ -24,12 +24,12 @@
         router>
         <el-menu-item index="/home">Home</el-menu-item>
         <el-menu-item index="/committee">Committee</el-menu-item>
-        <el-submenu index="3">
+        <el-submenu index="/">
           <template slot="title">Speakers</template>
           <el-menu-item index="3-1">Keynote Speakers</el-menu-item>
           <el-menu-item index="3-2">Invited Speakers</el-menu-item>
         </el-submenu>
-        <el-submenu index="4">
+        <el-submenu index="/papers">
           <template slot="title">Papers</template>
           <el-menu-item index="/papers/cpf">Call For Papers</el-menu-item>
           <el-menu-item index="/papers/cfss">Call For Special Sessions</el-menu-item>
@@ -39,20 +39,20 @@
         <el-submenu index="5">
           <template slot="title">Attendees</template>
           <el-menu-item index="5-1">Accommodation</el-menu-item>
-          <el-menu-item index="5-2">Schedule</el-menu-item>
+<!--          <el-menu-item index="5-2">Schedule</el-menu-item>-->
           <el-menu-item index="5-3">News</el-menu-item>
         </el-submenu>
+        <el-menu-item index="/program">Program</el-menu-item>
+        <el-menu-item index="/register">Register</el-menu-item>
+        <el-menu-item index="/Venue">Venue</el-menu-item>
 
-        <el-menu-item index="6">Register</el-menu-item>
-        <el-menu-item index="7">Venue</el-menu-item>
-        <el-menu-item index="8">Program</el-menu-item>
-        <el-menu-item index="9">Contact</el-menu-item>
-        <el-menu-item index="10">中文</el-menu-item>
+        <el-menu-item index="/contact">Contact</el-menu-item>
+        <el-menu-item index="/chinese">中文</el-menu-item>
       </el-menu>
     </el-row>
     <!-- 主页内容 -->
     <el-main class="index-main">
-      <router-view class="box"/>
+      <router-view/>
     </el-main>
     <!-- 主页尾部 -->
     <el-footer class="index-footer">
@@ -70,8 +70,44 @@ export default {
     };
   },
   methods: {
+    // formatterTitle(t) {
+    //   switch (t) {
+    //     case '1':
+    //       return 'Home'
+    //     case '2':
+    //       return 'Committee'
+    //     case '3':
+    //       return 'Speakers'
+    //     case '4':
+    //       return 'Papers'
+    //     case '5':
+    //       return 'Attendees'
+    //     case '6':
+    //       return 'Register'
+    //     case '7':
+    //       return 'Venue'
+    //     case '8':
+    //       return 'Program'
+    //     case '9':
+    //       return 'Contact'
+    //     case '10':
+    //       return '中文'
+    //     case '11':
+    //       return '轮播图'
+    //     case'12':
+    //       return 'papers/cpf'
+    //   }
+    // },
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      console.log('12', key, keyPath);
+      // console.log('23',this.formatterTitle(key))
+      // this.$router.push({     //跳转到指定页面并在目标页面获取到参数
+      //   path: '/home/' + this.formatterTitle(key),
+      //   query: {
+      //     title: this.formatterTitle(key),
+      //     id: key
+      //   }
+      // })
     }
   }
 }
@@ -79,15 +115,17 @@ export default {
 
 <style scoped>
   .index-container {
-    width: 65%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     min-height: 100%;
   }
-
+  el-menu-item {
+    width: 150px;
+  }
   .index-header {
-    height: 80px !important;
+    height: 85% !important;
     padding: 0;
   }
 

@@ -6,9 +6,11 @@ import Committee from "../views/indexSon/Committee"
 import Speakers from "../views/indexSon/Speakers"
 import Papers from "../views/indexSon/Papers"
 import Attendees from "../views/indexSon/Attendees"
+import Program from "../views/indexSon/Program";
 import Register from "../views/indexSon/Register"
 import Venue from "../views/indexSon/Venue"
 import Contact from "../views/indexSon/Contact"
+import Chinese from "../views/indexSon/Chinese";
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
 
@@ -54,6 +56,14 @@ export default new Router({
         {
           path: "attendees",
           component: Attendees
+        },
+        {
+          path: "chinese",
+          component: Chinese
+        },
+        {
+          path: 'program',
+          component: Program
         },
         {
           path: 'register',

@@ -10,16 +10,16 @@
     </el-row>
     <!-- 首页下半部分 -->
     <el-row>
-
       <!-- 会议介绍 -->
       <el-row v-for="(item, index) in menuList" :key="index" class="liStylenone liPointer marb10" >
-        <big-title :title="bigTitle[0]">{{ item.name }}</big-title>
+         <big-title :title=item.name></big-title>
         <el-card class="home-introduction-content">
-          <el-col>
-            <div v-html="this.new.content" class="ql-editor"></div>
-          </el-col>
+          <el-row>
+            <div v-html="item.content" class="ql-editor"></div>
+          </el-row>
         </el-card>
       </el-row>
+    </el-row>
 <!--      &lt;!&ndash; 会议时间 &ndash;&gt;-->
 <!--      <el-row>-->
 <!--        <big-title :title="bigTitle[1]"></big-title>-->
@@ -41,17 +41,15 @@
 <!--          {{this.conferenceData.introduction}}-->
 <!--        </el-row>-->
 <!--      </el-row>-->
-    </el-row>
-    <!-- -->
-    <el-row>
 
-    </el-row>
+    <!-- -->
+
   </div>
 </template>
 
 <script>
 import BigTitle from "../../components/common/BigTitle"
-import { getNewsList , getnew} from '../../Api/api'
+import { getMinTitle,getNewsList , getnew} from '../../Api/api'
 export default {
   name: "Home",
   components: {BigTitle},
@@ -64,7 +62,7 @@ export default {
       menuList: [],
       newsList: [],
       new: {}, //新闻对象
-      bigTitle: ['About DSKE 2023', 'Important Dates' ,'Keynote Speakers','Publication'],
+      bigTitle: ['About DSKE 2023', 'Important Dates', 'Keynote Speakers', 'Publication'],
       // bigTitleid:['42', '43' ,'44','45'],
       conferenceData: {
         title: "About DSKE 2023",
@@ -87,10 +85,10 @@ export default {
   },
   created() {
     this.getnews()
-    // this.getnews1()
+    this.getTitle()
   },
   methods: {
-
+//获取后端轮播图
     getnews() {
       const data = {
         current: 1,
@@ -107,57 +105,76 @@ export default {
         })
         .catch(err => {
           console.log(err)
-        }),
-     //获取小标题id
-      getTitle() {
+        })
+    },
+        //获取小标题id
+        getTitle(){
         const data = 1
         getMinTitle(data)
           .then(res => {
             // console.log(res);
             if (res.code == 200) {
               this.menuList = res.data
-              console.log(this.menuList)
+              console.log('123', this.menuList)
+              for(let i = 0 ; i < this.menuList.length; i++){
+
+                  this.getnews1(this.menuList[i])
+
+              }
+              // this.getnews1(this.menuList[0])
+              // this.getnews1(this.menuList[1])
+              // this.getnews1(this.menuList[2])
+              // this.getnews1(this.menuList[3])
             }
           })
           .catch(err => {
             console.log(err)
           })
       },
+
+      //根据小标题id获取新闻
       getnews1(item) {
-      const data = {
-        current: 1,
-        newsCategoryId: item.id,
-        size: 5
-      }
-      getNewsList(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        }),
-        //获取新闻内容,得到一个新闻对象
-        getalone(id)
-      {
-        const data = id
-        getnew(data)
+       console.log('item1',item)
+        const data = {
+          current: 1,
+          newsCategoryId: item.id,
+          size: 5
+        }
+        getNewsList(data)
           .then(res => {
             // console.log(res);
             if (res.code == 200) {
-              this.new = res.data
-              console.log(this.new.content)  //在控制台输出信息
+              this.newsList = res.data.records
+              console.log('newsList',this.newsList)
+              this.getalone(this.newsList[0].id, item)
             }
           })
           .catch(error => {
             console.log(error)
           })
+      },
 
-    }
-  }
+     //获取新闻内容,得到一个新闻对象
+        getalone(id,item) {
+          const data = id
+          console.log('id',id)
+          getnew(data)
+            .then(res => {
+              // console.log(res);
+              if (res.code == 200) {
+                this.new = res.data
+                console.log('new', res.data)
+                console.log('CONTENT',this.new.content)  //在控制台输出信息
+                this.$set(item, 'content', this.new.content)
+                console.log('item3', this.menuList)
+              }
+            })
+            .catch(error => {
+              console.log(error)
+            })
+
+        }
+      }
 }
 
 
