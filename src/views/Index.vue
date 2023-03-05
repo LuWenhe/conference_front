@@ -13,42 +13,7 @@
     </el-header>
     <!-- 导航栏 -->
     <el-row>
-      <el-menu
-        :default-active="$route.path"
-        class="el-menu"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#0768AC"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-        router>
-        <el-menu-item index="/home">Home</el-menu-item>
-        <el-menu-item index="/committee">Committee</el-menu-item>
-        <el-submenu index="/">
-          <template slot="title">Speakers</template>
-          <el-menu-item index="3-1">Keynote Speakers</el-menu-item>
-          <el-menu-item index="3-2">Invited Speakers</el-menu-item>
-        </el-submenu>
-        <el-submenu index="/papers">
-          <template slot="title">Papers</template>
-          <el-menu-item index="/papers/cpf">Call For Papers</el-menu-item>
-          <el-menu-item index="/papers/cfss">Call For Special Sessions</el-menu-item>
-          <el-menu-item index="4-3">Paper Submission</el-menu-item>
-          <el-menu-item index="4-3">Important Dates</el-menu-item>
-        </el-submenu>
-        <el-submenu index="5">
-          <template slot="title">Attendees</template>
-          <el-menu-item index="5-1">Accommodation</el-menu-item>
-<!--          <el-menu-item index="5-2">Schedule</el-menu-item>-->
-          <el-menu-item index="5-3">News</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="/program">Program</el-menu-item>
-        <el-menu-item index="/register">Register</el-menu-item>
-        <el-menu-item index="/Venue">Venue</el-menu-item>
-
-        <el-menu-item index="/contact">Contact</el-menu-item>
-        <el-menu-item index="/chinese">中文</el-menu-item>
-      </el-menu>
+      <common-menu/>
     </el-row>
     <!-- 主页内容 -->
     <el-main class="index-main">
@@ -62,8 +27,12 @@
 </template>
 
 <script>
+import CommonMenu from '../components/common/CommonMenu.vue'
 export default {
   name: "Index",
+  components:{
+    CommonMenu
+  },
   data() {
     return {
       activeIndex: '1'
@@ -100,14 +69,6 @@ export default {
     // },
     handleSelect(key, keyPath) {
       console.log('12', key, keyPath);
-      // console.log('23',this.formatterTitle(key))
-      // this.$router.push({     //跳转到指定页面并在目标页面获取到参数
-      //   path: '/home/' + this.formatterTitle(key),
-      //   query: {
-      //     title: this.formatterTitle(key),
-      //     id: key
-      //   }
-      // })
     }
   }
 }
