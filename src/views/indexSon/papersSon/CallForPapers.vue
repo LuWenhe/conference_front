@@ -1,75 +1,47 @@
 <template>
-  <div class="callforpapers-box">
-    qweqw4eqwe
+  <div class="callForPapers-box">
     <el-row>
-      <big-title :title=" bigTitle[0]"></big-title>
-      <el-card class="box-card">
-        <el-col>
-          <div v-html="this.new.content" class="ql-editor"></div>
-        </el-col>
-      </el-card>
+      <common-main :resData="resData"></common-main>
     </el-row>
-   </div>
-</template>
 
+  </div>
+</template>
 <script>
-import BigTitle from "../../../components/common/BigTitle"
-import {getnew, getNewsList} from '../../../Api/api'
+
+import BigTitle from "../../../components/common/BigTitle.vue"
+import CommonMain from "../../components/commonMain.vue"
 export default {
   name: "CallForPapers",
-  components: {BigTitle},
+  components: {BigTitle,  CommonMain},
   data() {
     return{
-      bigTitle: ['CallForPapers'],
+      bigTitle: ['committee'],
       newList: [],
-      new: {}
-    }
-  },
-  created() {
-    console.log('43')
-    this.getnews()
-  },
-  methods: {
-    //获取新闻列表
-    getnews() {
-      const data = {
+      new: {},
+      resData: {
         current: 1,
         newsCategoryId:29 , //限定新闻类别
         size: 5
       }
-      getNewsList(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-
-    //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      const data = id
-      getnew(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
-            this.new = res.data
-            console.log(this.new.content)  //在控制台输出信息
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
     }
+  },
+  created() {
+  },
+  methods: {
   }
 
 }
 </script>
 
 <style scoped>
-
+.home-introduction-content {
+  background-color: #ffffff;
+  line-height: 24px;
+  word-wrap: break-word;
+  padding: 20px;
+  margin: 10px 0;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  text-align: justify;
+  font-size: 16px;
+}
 </style>

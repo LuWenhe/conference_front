@@ -13,6 +13,8 @@ import Contact from "../views/indexSon/Contact"
 import Chinese from "../views/indexSon/Chinese";
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
+import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
+import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
 
 Vue.use(Router)
 
@@ -50,6 +52,14 @@ export default new Router({
             {
               path: 'cfss',
               component: CallForSpecialSessions
+            },
+            {
+              path: 'ps',
+              component: PaperSubmission
+            },
+            {
+              path: 'id',
+              component: ImportantDates
             }
           ]
         },

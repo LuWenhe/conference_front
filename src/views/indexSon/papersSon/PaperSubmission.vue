@@ -1,5 +1,5 @@
 <template>
-  <div class="callForPapers-box">
+  <div class="papersubmission-box">
     <el-row>
       <common-main :resData="resData"></common-main>
     </el-row>
@@ -11,7 +11,7 @@
 import BigTitle from "../../../components/common/BigTitle.vue"
 import CommonMain from "../../components/commonMain.vue"
 export default {
-  name: "CallForSpecialSessions",
+  name: "PaperSubmission",
   components: {BigTitle,  CommonMain},
   data() {
     return{
