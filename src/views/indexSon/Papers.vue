@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: "Papers"
+  name: "Papers",
+  id:""
 }
 </script>
 
