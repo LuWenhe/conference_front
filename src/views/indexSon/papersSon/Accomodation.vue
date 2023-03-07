@@ -11,20 +11,20 @@
 import BigTitle from "../../../components/common/BigTitle.vue"
 import CommonMain from "../../components/commonMain.vue"
 export default {
-  name: "CallForSpecialSessions",
+  name: "Accomodation",
   components: {BigTitle,  CommonMain},
   data() {
     return{
-      bigTitle: ['committee'],
+      bigTitle: [],
       newList: [],
       new: {},
       resData: {
         current: 1,
-        newsCategoryId:43 , //限定新闻类别
+        newsCategoryId:35, //限定新闻类别
         size: 1,
-        index: 1
+        index: 0
       },
-      titleId: 4
+      titleId: 5
     }
   },
   created() {

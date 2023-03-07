@@ -11,9 +11,13 @@ import Register from "../views/indexSon/Register"
 import Venue from "../views/indexSon/Venue"
 import Contact from "../views/indexSon/Contact"
 import Chinese from "../views/indexSon/Chinese";
+import InvitedSpeakers from "../views/indexSon/papersSon/InvitedSpeakers"
+import KeynoteSpeakers from "../views/indexSon/papersSon/KeynoteSpeakers"
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
+import Accomodation from "../views/indexSon/papersSon/Accomodation"
+import LatestNews from "../views/indexSon/papersSon/LatestNews"
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions";
 
 Vue.use(Router)
@@ -35,7 +39,21 @@ export default new Router({
         },
         {
           path: 'speakers',
-          component: Speakers
+          component: Speakers,
+          children: [
+            {
+              path: '/',
+              redirect: 'ks'
+            },
+            {
+              path: 'ks',
+              component: KeynoteSpeakers
+            },
+            {
+              path: 'is',
+              component: InvitedSpeakers
+            },
+          ]
         },
         {
           path: 'papers',
@@ -65,7 +83,21 @@ export default new Router({
         },
         {
           path: "attendees",
-          component: Attendees
+          component: Attendees,
+          children: [
+            {
+              path: '/',
+              redirect: 'ad'
+            },
+            {
+              path: 'ad',
+              component: Accomodation
+            },
+            {
+              path: 'ln',
+              component: LatestNews
+            },
+          ]
         },
         {
           path: "chinese",
