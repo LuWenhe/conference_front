@@ -1,7 +1,7 @@
 <template>
-  <div class="importantdates-box">
+  <div class="callForPapers-box">
     <el-row>
-      <common-main :resData="resData"></common-main>
+      <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
 
   </div>
@@ -11,18 +11,20 @@
 import BigTitle from "../../../components/common/BigTitle.vue"
 import CommonMain from "../../components/commonMain.vue"
 export default {
-  name: "ImportantDates",
+  name: "CallForSpecialSessions",
   components: {BigTitle,  CommonMain},
   data() {
     return{
-      bigTitle: ['ImportantDates'],
+      bigTitle: ['committee'],
       newList: [],
       new: {},
       resData: {
         current: 1,
-        newsCategoryId:29 , //限定新闻类别
-        size: 5
-      }
+        newsCategoryId:43 , //限定新闻类别
+        size: 1,
+        index: 1
+      },
+      titleId: 1
     }
   },
   created() {

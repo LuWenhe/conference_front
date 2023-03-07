@@ -1,7 +1,7 @@
 <template>
-  <div class="papersubmission-box">
+  <div class="callForPapers-box">
     <el-row>
-      <common-main :resData="resData"></common-main>
+      <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
 
   </div>
@@ -11,7 +11,7 @@
 import BigTitle from "../../../components/common/BigTitle.vue"
 import CommonMain from "../../components/commonMain.vue"
 export default {
-  name: "PaperSubmission",
+  name: "CallForSpecialSessions",
   components: {BigTitle,  CommonMain},
   data() {
     return{
@@ -21,8 +21,10 @@ export default {
       resData: {
         current: 1,
         newsCategoryId:31 , //限定新闻类别
-        size: 5
-      }
+        size: 1,
+        index: 2
+      },
+      titleId: 4
     }
   },
   created() {

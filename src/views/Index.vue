@@ -30,7 +30,7 @@
 import CommonMenu from '../components/common/CommonMenu.vue'
 export default {
   name: "Index",
-  components:{
+  components: {
     CommonMenu
   },
   data() {
@@ -39,39 +39,39 @@ export default {
     };
   },
   methods: {
-    formatterTitle(t) {
-      switch (t) {
-        case '1':
-          return 'Home'
-        case '2':
-          return 'Committee'
-        case '3':
-          return 'Speakers'
-        case '4':
-          return 'Papers'
-        case '5':
-          return 'Attendees'
-        case '6':
-          return 'Register'
-        case '7':
-          return 'Venue'
-        case '8':
-          return 'Program'
-        case '9':
-          return 'Contact'
-        case '10':
-          return '中文'
-        case '11':
-          return '轮播图'
-        case'12':
-          return 'papers/cpf'
-      }
-    },
+    // formatterTitle(t) {
+    //   switch (t) {
+    //     case '1':
+    //       return 'Home'
+    //     case '2':
+    //       return 'Committee'
+    //     case '3':
+    //       return 'Speakers'
+    //     case '4':
+    //       return 'Papers'
+    //     case '5':
+    //       return 'Attendees'
+    //     case '6':
+    //       return 'Register'
+    //     case '7':
+    //       return 'Venue'
+    //     case '8':
+    //       return 'Program'
+    //     case '9':
+    //       return 'Contact'
+    //     case '10':
+    //       return '中文'
+    //     case '11':
+    //       return '轮播图'
+    //     case'12':
+    //       return 'papers/cpf'
+    //   }
     handleSelect(key, keyPath) {
       console.log('12', key, keyPath);
     }
   }
 }
+
 </script>
 
 <style scoped>

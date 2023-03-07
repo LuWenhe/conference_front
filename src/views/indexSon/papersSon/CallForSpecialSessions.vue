@@ -1,7 +1,7 @@
 <template>
   <div class="callForPapers-box">
     <el-row>
-      <common-main :resData="resData"></common-main>
+      <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
 
   </div>
@@ -20,9 +20,11 @@ export default {
       new: {},
       resData: {
         current: 1,
-        newsCategoryId:29 , //限定新闻类别
-        size: 5
-      }
+        newsCategoryId:30 , //限定新闻类别
+        size: 1,
+        index: 1
+      },
+      titleId: 4
     }
   },
   created() {
