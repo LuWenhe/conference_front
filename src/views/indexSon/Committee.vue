@@ -1,7 +1,7 @@
 <template>
   <div class="committee-box">
     <el-row>
-      <big-title :title="bigTitle[0]"></big-title>
+      <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
         <el-col>
           <div v-html="this.new.content" class="ql-editor"></div>
@@ -14,48 +14,26 @@
 <script>
 
 import BigTitle from "../../components/common/BigTitle"
-import {getMinTitle, getnew, getNewsList} from '../../Api/api'
+import {getnew, getNewsList} from '../../Api/api'
 export default {
   name: "Committee",
   components: {BigTitle},
   data() {
     return{
-      bigTitle: [],
+      bigTitle: ['committee'],
       newList: [],
       new: {}
     }
   },
   created() {
-    this.getTitle()
-    // this.getnews()
+    this.getnews()
   },
   methods: {
-
-    //获取小标题id
-    getTitle(){
-      const data = 2
-      getMinTitle(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
-            this.menuList = res.data
-            this.menuList.map(item => {
-              this.bigTitle.push(item.name)
-            })
-            console.log('comite2', this.menuList,this.bigTitle)
-            this.getnews(this.menuList[0])
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
-
     //获取新闻列表
-    getnews(item) {
+    getnews() {
       const data = {
         current: 1,
-        newsCategoryId:item.id , //限定新闻类别
+        newsCategoryId:47 , //限定新闻类别
         size: 5
       }
       getNewsList(data)
@@ -79,7 +57,7 @@ export default {
           // console.log(res);
           if (res.code == 200) {
             this.new = res.data
-            console.log('content', this.new.content)  //在控制台输出信息
+            console.log(this.new.content)  //在控制台输出信息
           }
         })
         .catch(error => {

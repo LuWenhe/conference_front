@@ -20,7 +20,7 @@ export default {
       new: {},
       resData: {
         current: 1,
-        newsCategoryId:30 , //限定新闻类别
+        newsCategoryId:29 , //限定新闻类别
         size: 5
       }
     }
