@@ -19,11 +19,33 @@ import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
 import Accomodation from "../views/indexSon/papersSon/Accomodation"
 import LatestNews from "../views/indexSon/papersSon/LatestNews"
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions";
+import AdEdit from "../components/manage/AdEdit";
+import AdMain from "../components/manage/AdMain";
+import Administrator from "../components/manage/AdminHome";
+import Edit from "../components/manage/Edit";
+import EditLunBo from "../components/manage/EditLunBo";
+import Login from "../components/manage/Login";
+import Main from "../components/manage/Main";
+import Welcome from "../components/manage/Welcome";
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
+    { path: '/login', component: Login },
+    {
+      path: '/administrator',
+      component: Administrator, //跳转到组件
+      children: [
+        { path: 'welcome', component: Welcome },
+        { path: 'main', component: Main },
+        { path: 'edit', component: Edit },
+        // { path: 'news', component: News },
+        { path: 'editlunbo', component: EditLunBo },
+        { path: 'admain', component: AdMain },
+        { path: 'adedit', component: AdEdit }
+      ]
+    },
     {
       path: '/',
       component: Index,
@@ -122,5 +144,18 @@ export default new Router({
       ]
     }
   ],
-  mode: 'history'
 })
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (to.path === '/administrator/main' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/admain' && !tokenStr) return next('/login')
+  if (to.path === '/administrator' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/edit' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/welcome' && !tokenStr) return next('/login')
+  // if (!tokenStr) return next('/login')
+  next()
+})
+
+export default router
+
