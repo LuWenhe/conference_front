@@ -12,7 +12,7 @@ import Venue from "../views/indexSon/Venue"
 import Contact from "../views/indexSon/Contact"
 import Chinese from "../views/indexSon/Chinese";
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
-import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
+import SpecialSessions from "../views/indexSon/papersSon/SpecialSessions"
 import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
 
