@@ -1,16 +1,12 @@
 <template>
   <div>
-    <!-- 主页会议记录 -->
     <el-row>
-      <!-- 会议介绍 -->
-      <el-row v-for="(item, index) in menuList" :key="index" class="liStylenone liPointer marb10" >
-        <big-title :title=item.name></big-title>
-        <el-card class="home-introduction-content">
-          <el-row>
-            <div v-html="item.content" class="ql-editor"></div>
-          </el-row>
-        </el-card>
-      </el-row>
+      <big-title :title="bigTitle[0]"></big-title>
+      <el-card class="box-card">
+        <el-col>
+          <div v-html="this.new.content" class="ql-editor"></div>
+        </el-col>
+      </el-card>
     </el-row>
   </div>
 </template>
@@ -25,121 +21,82 @@ export default {
       resData:{
           type:Object,
           default:{}
+      },
+      titleId: {
+        type:Number,
+        default:''
       }
   },
   data() {
     return {
-      menuList: [
-        {
-          name:'清华大学',
-          content:'请问你们想做什么呢？'
-        }
-      ],
+      menuList: [],
       newsList: [],
       new: {}, //新闻对象
-      bigTitle: ['About DSKE 2023', 'Important Dates', 'Keynote Speakers', 'Publication'],
-      conferenceData: {
-        title: "About DSKE 2023",
-        introduction: "2022 International Conference on Informatics, " +
-          "Networking and Computing (ICINC 2022)  will be held in Nanjing, " +
-          "China on October 14-16, 2022. The meeting will be on  Informatics, " +
-          "Networking and Computing, etc. The latest research achievements " +
-          "in the field of communication, from domestic and foreign institutions " +
-          "of higher learning, scientific research institutes, enterprises and " +
-          "institutions of experts, professors, scholars, engineers and other " +
-          "provide a share professional experience, expand the professional network, " +
-          "face to face to new ideas and show the research results of the international " +
-          "platform, To discuss key challenges and research directions in this field, " +
-          "with a view to promoting the development and application of theories and " +
-          "technologies in this field in universities and enterprises, as well as " +
-          "establishing business or research contacts and seeking global partners " +
-          "for future undertakings.",
-      }
+      bigTitle: [],
+
     }
   },
   created() {
-    console.log('this', this.resData)
-    this.getnews()
+    console.log('this', this.resData,this.titleId)
     this.getTitle()
   },
   methods: {
-//获取后端轮播图
-    getnews() {
-      const data = this.resData
-      console.log('data',data)
-      getNewsList(data)
+    //获取小标题id
+    getTitle(){
+      const data = this.titleId
+      getMinTitle(data)
         .then(res => {
-          console.log(res)
+          // console.log(res);
           if (res.code == 200) {
-            this.bannerList = res.data.records
-
+            this.menuList = res.data
+            this.menuList.map(item => {
+              this.bigTitle.push(item.name)
+            })
+            console.log('comite2', this.menuList,this.bigTitle)
+            this.getnews(this.menuList[0])
           }
         })
         .catch(err => {
           console.log(err)
         })
     },
-        //获取小标题id
-        getTitle(){
-        const data = 1
-        getMinTitle(data)
-          .then(res => {
-            if (res.code == 200) {
-              this.menuList = res.data
-              console.log('123', this.menuList)
-              for(let i = 0 ; i < this.menuList.length; i++){
-                  this.getnews1(this.menuList[i])
-              }
-            }
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      },
 
-      //根据小标题id获取新闻
-      getnews1(item) {
-       console.log('item1',item)
-        const data = {
-          current: 1,
-          newsCategoryId: item.id,
-          size: 5
-        }
-        getNewsList(data)
-          .then(res => {
-            // console.log(res);
-            if (res.code == 200) {
-              this.newsList = res.data.records
-              console.log('newsList',this.newsList)
-              this.getalone(this.newsList[0].id, item)
-            }
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      },
-
-     //获取新闻内容,得到一个新闻对象
-        getalone(id,item) {
-          const data = id
-          console.log('id',id)
-          getnew(data)
-            .then(res => {
-              // console.log(res);
-              if (res.code == 200) {
-                this.new = res.data
-                console.log('new', res.data)
-                console.log('CONTENT',this.new.content)  //在控制台输出信息
-                this.$set(item, 'content', this.new.content)
-                console.log('item3', this.menuList)
-              }
-            })
-            .catch(error => {
-              console.log(error)
-            })
-
-        }
+    //获取新闻列表
+    getnews(item) {
+      const data = {
+        current: 1,
+        newsCategoryId:item.id , //限定新闻类别
+        size: 5
       }
+      getNewsList(data)
+        .then(res => {
+          // console.log(res);
+          if (res.code == 200) {
+            this.newsList = res.data.records
+            this.getalone(this.newsList[0].id)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    //获取新闻内容,得到一个新闻对象
+    getalone(id) {
+      const data = id
+      getnew(data)
+        .then(res => {
+          // console.log(res);
+          if (res.code == 200) {
+            this.new = res.data
+            console.log('content', this.new.content)  //在控制台输出信息
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }
 }
 
 
