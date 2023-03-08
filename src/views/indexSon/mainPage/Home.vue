@@ -2,22 +2,21 @@
   <div class="home-box">
     <!-- 首页上半部分 轮播图-->
     <el-row>
-      <el-carousel class="home-carousel" :interval="5000" arrow="always">
+      <el-carousel class="home-carousel" :interval="5000" arrow="always" height="100%">
         <el-carousel-item v-for="(item, index) in bannerList" :key="index">
           <img class="carousel-img" :src="'http://localhost:7070/' + item.picturePath" alt="">
         </el-carousel-item>
       </el-carousel>
     </el-row>
     <!-- 首页下半部分 -->
-    <el-row>
-      <!-- 会议介绍 -->
+    <el-row class="home-box-bottom">
       <el-row v-for="(item, index) in menuList" :key="index" class="liStylenone liPointer marb10">
         <big-title :title=item.name></big-title>
-        <el-card class="home-introduction-content">
+        <el-row class="home-introduction-content">
           <el-row>
             <div v-html="item.content" class="ql-editor"></div>
           </el-row>
-        </el-card>
+        </el-row>
       </el-row>
     </el-row>
   </div>
@@ -56,7 +55,6 @@ export default {
         .then(res => {
           if (res.code === 200) {
             this.bannerList = res.data.records
-
           }
         })
         .catch(err => {
@@ -118,7 +116,6 @@ export default {
         .catch(error => {
 
         })
-
     }
   }
 }
@@ -127,38 +124,45 @@ export default {
 </script>
 
 <style scoped>
-.home-carousel {
-  width: 100%;
-}
+  .home-carousel {
+    width: 100%;
+    height: 480px;
+  }
 
-.carousel-img {
-  width: 100%;
-  height: 100%;
-}
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+  }
 
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
-}
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 18px;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+  }
 
-.home-title span {
-  font-size: 24px;
-  font-weight: 500;
-  margin-left: 20px;
-  color: rgba(51, 51, 51, 1);
-}
+  .home-box-bottom {
+    margin: 0 auto;
+    width: 60%;
+  }
 
-.home-introduction-content {
-  background-color: #ffffff;
-  line-height: 24px;
-  word-wrap: break-word;
-  padding: 20px;
-  margin: 10px 0;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  text-align: justify;
-  font-size: 16px;
-}
+  .home-title span {
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 20px;
+    color: rgba(51, 51, 51, 1);
+  }
+
+  .home-introduction-content {
+    background-color: #ffffff;
+    line-height: 24px;
+    word-wrap: break-word;
+    padding: 15px;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    text-align: justify;
+    font-size: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  }
 </style>

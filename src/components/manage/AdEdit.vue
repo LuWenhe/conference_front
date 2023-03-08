@@ -81,7 +81,7 @@ export default {
     ready() {
       getmain().then(res => {
         // console.log(res);
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.tableData = res.data
         }
       })
@@ -109,8 +109,7 @@ export default {
         password: this.editForm.password
       }
       editAccount(data).then(res => {
-        // console.log(res);
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.$message.success('账户修改成功')
           this.editDialogVisible = false
           this.ready()
@@ -141,8 +140,7 @@ export default {
         }
         //参数data 要以对象的形式传入
         deleteAd(data).then(res => {
-          // console.log('>>>'+res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message.success('删除成功！')
             this.ready()
           } else {
@@ -171,7 +169,7 @@ export default {
         password: this.addForm.password
       }
       addAd(data).then(res => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.$message.success('注册成功')
           this.addDialogVisible = false
           this.ready()

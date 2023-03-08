@@ -12,7 +12,7 @@
       </el-row>
     </el-header>
     <!-- 导航栏 -->
-    <el-row>
+    <el-row class="index-menu">
       <common-menu/>
     </el-row>
     <!-- 主页内容 -->
@@ -71,20 +71,21 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
   .index-container {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     min-height: 100%;
   }
+
   el-menu-item {
     width: 150px;
   }
+
   .index-header {
     height: 85% !important;
     padding: 0;
@@ -93,7 +94,7 @@ export default {
   .index-main {
     height: 100% !important;
     padding: 0;
-    margin-top: -1px;
+    /*margin-top: -1px;*/
   }
 
   .index-footer {
@@ -111,6 +112,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
   }
 
   .index-top-img img {

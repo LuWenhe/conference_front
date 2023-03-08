@@ -51,7 +51,6 @@
 <script>
 export default {
   name: "CommonMenu",
-
   data() {
     return {
       menuData: [
@@ -169,8 +168,16 @@ export default {
 
   methods: {
     handleSelect(key, keyPath) {
-      console.log("12", key, keyPath);
+
     },
   },
 };
 </script>
+
+<style scoped>
+  .el-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

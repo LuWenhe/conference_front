@@ -21,7 +21,7 @@ import LatestNews from "@/views/indexSon/attendeesSon/LatestNews"
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
 import AdEdit from "../components/manage/AdEdit"
 import AdMain from "../components/manage/AdMain"
-import Administrator from "../components/manage/AdminHome"
+import AdminHome from "../components/manage/AdminHome"
 import Edit from "../components/manage/Edit"
 import EditLunBo from "../components/manage/EditLunBo"
 import Login from "../components/manage/Login"
@@ -35,7 +35,7 @@ const router = new Router({
     { path: '/login', component: Login },
     {
       path: '/administrator',
-      component: Administrator, //跳转到组件
+      component: AdminHome, //跳转到组件
       children: [
         { path: 'welcome', component: Welcome },
         { path: 'main', component: Main },
