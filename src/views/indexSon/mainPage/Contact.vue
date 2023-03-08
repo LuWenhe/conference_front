@@ -1,5 +1,5 @@
 <template>
-  <div class="venue-box">
+  <div class="contact-box">
     <el-row>
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
@@ -8,19 +8,19 @@
         </el-col>
       </el-card>
     </el-row>
-
   </div>
 </template>
 
 <script>
-import BigTitle from "../../components/common/BigTitle"
-import {getnew, getNewsList} from '../../Api/api'
+import BigTitle from "@/components/common/BigTitle.vue"
+import {getnew, getNewsList} from '@/Api/api'
+
 export default {
-  name: "Venue",
+  name: "Contact",
   components: {BigTitle},
   data() {
     return{
-      bigTitle: ['Conference Venue'],
+      bigTitle: ['Contact Us'],
       newList: [],
       new: {}
     }
@@ -33,38 +33,37 @@ export default {
     getnews() {
       const data = {
         current: 1,
-        newsCategoryId:39 , //限定新闻类别
+        newsCategoryId:41 , //限定新闻类别
         size: 5
       }
       getNewsList(data)
         .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.newsList = res.data.records
             this.getalone(this.newsList[0].id)
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     },
 
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
-      const data = id
-      getnew(data)
+      getnew(id)
         .then(res => {
           // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.new = res.data
             console.log(this.new.content)  //在控制台输出信息
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     }
   }
+
 }
 </script>
 

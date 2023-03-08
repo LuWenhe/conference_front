@@ -38,8 +38,9 @@
 </template>
 
 <script>
-import BigTitle from "../../components/common/BigTitle"
-import {getnew, getNewsList} from '../../Api/api'
+import BigTitle from "@/components/common/BigTitle.vue"
+import {getnew, getNewsList} from '@/Api/api'
+
 export default {
   name: "Program",
   components: {BigTitle},
@@ -86,30 +87,27 @@ export default {
       }
       getNewsList(data)
         .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.newsList = res.data.records
             this.getalone(this.newsList[0].id)
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     },
 
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
-      const data = id
-      getnew(data)
+      getnew(id)
         .then(res => {
           // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.new = res.data
-            console.log(this.new.content)  //在控制台输出信息
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     },
     arraySpanMethod({row, column, rowIndex, columnIndex}) {
@@ -121,7 +119,6 @@ export default {
         }
       }
     },
-
     objectSpanMethod({row, column, rowIndex, columnIndex}) {
       if (columnIndex === 0) {
         if (rowIndex % 2 === 0) {

@@ -3,13 +3,12 @@
     <el-row>
       <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
-
   </div>
 </template>
 <script>
 
-import BigTitle from "../../../components/common/BigTitle.vue"
-import CommonMain from "../../components/commonMain.vue"
+import BigTitle from "@/components/common/BigTitle"
+import CommonMain from "@/components/common/CommonContent"
 export default {
   name: "KeynoteSpeakers",
   components: {BigTitle,  CommonMain},
@@ -36,14 +35,5 @@ export default {
 </script>
 
 <style scoped>
-.home-introduction-content {
-  background-color: #ffffff;
-  line-height: 24px;
-  word-wrap: break-word;
-  padding: 20px;
-  margin: 10px 0;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  text-align: justify;
-  font-size: 16px;
-}
+
 </style>

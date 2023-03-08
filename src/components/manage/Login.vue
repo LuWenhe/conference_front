@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { login } from '../../Api/api'
+import { login } from '@/Api/api'
 export default {
   data() {
     return {
@@ -47,7 +47,7 @@ export default {
         console.log(res)
         if (res.code !== 200) {
           this.$message.error('登录失败！')
-        } else if (res.data.role == '超级管理员') {
+        } else if (res.data.role === '超级管理员') {
           this.$message.success('超管登录成功！')
           window.sessionStorage.setItem('token', res.cookie)
           this.$router.push('/administrator/admain')

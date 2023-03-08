@@ -1,5 +1,5 @@
 //封装路径请求
-import request from '../network/request'
+import {request} from '@/network/request'
 // // 导航栏列表
 // export const getNavList = data => {
 //   return request({

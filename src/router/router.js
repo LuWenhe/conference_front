@@ -1,32 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from "../views/Index"
-import Home from "../views/indexSon/Home"
-import Committee from "../views/indexSon/Committee"
-import Speakers from "../views/indexSon/Speakers"
-import Papers from "../views/indexSon/Papers"
-import Attendees from "../views/indexSon/Attendees"
-import Program from "../views/indexSon/Program";
-import Register from "../views/indexSon/Register"
-import Venue from "../views/indexSon/Venue"
-import Contact from "../views/indexSon/Contact"
-import Chinese from "../views/indexSon/Chinese";
-import InvitedSpeakers from "../views/indexSon/papersSon/InvitedSpeakers"
-import KeynoteSpeakers from "../views/indexSon/papersSon/KeynoteSpeakers"
+import Home from "../views/indexSon/mainPage/Home.vue"
+import Committee from "../views/indexSon/mainPage/Committee.vue"
+import Speakers from "../views/indexSon/mainPage/Speakers.vue"
+import Papers from "../views/indexSon/mainPage/Papers.vue"
+import Attendees from "../views/indexSon/mainPage/Attendees.vue"
+import Program from "../views/indexSon/mainPage/Program.vue"
+import Register from "../views/indexSon/mainPage/Register.vue"
+import Venue from "../views/indexSon/mainPage/Venue.vue"
+import Contact from "../views/indexSon/mainPage/Contact.vue"
+import Chinese from "../views/indexSon/mainPage/Chinese.vue"
+import InvitedSpeakers from "../views/indexSon/speakersSon/InvitedSpeakers.vue"
+import KeynoteSpeakers from "../views/indexSon/speakersSon/KeynoteSpeakers.vue"
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
-import Accomodation from "../views/indexSon/papersSon/Accomodation"
-import LatestNews from "../views/indexSon/papersSon/LatestNews"
-import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions";
-import AdEdit from "../components/manage/AdEdit";
-import AdMain from "../components/manage/AdMain";
-import Administrator from "../components/manage/AdminHome";
-import Edit from "../components/manage/Edit";
-import EditLunBo from "../components/manage/EditLunBo";
-import Login from "../components/manage/Login";
-import Main from "../components/manage/Main";
-import Welcome from "../components/manage/Welcome";
+import Accomodation from "../views/indexSon/attendeesSon/Accomodation.vue"
+import LatestNews from "@/views/indexSon/attendeesSon/LatestNews"
+import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
+import AdEdit from "../components/manage/AdEdit"
+import AdMain from "../components/manage/AdMain"
+import Administrator from "../components/manage/AdminHome"
+import Edit from "../components/manage/Edit"
+import EditLunBo from "../components/manage/EditLunBo"
+import Login from "../components/manage/Login"
+import Main from "../components/manage/Main"
+import Welcome from "../components/manage/Welcome"
 
 Vue.use(Router)
 
@@ -104,7 +104,7 @@ const router = new Router({
           ]
         },
         {
-          path: "attendees",
+          path: "attendeesSon",
           component: Attendees,
           children: [
             {
@@ -144,6 +144,7 @@ const router = new Router({
       ]
     }
   ],
+  mode: 'history'
 })
 // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {

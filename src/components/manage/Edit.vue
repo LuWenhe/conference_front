@@ -14,7 +14,7 @@
 </template>
 <script>
 // import axios from 'axios'
-import { add, fileUpload, login } from '../../Api/api'
+import { add, fileUpload, login } from '@/Api/api'
 import { quillEditor, Quill } from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'

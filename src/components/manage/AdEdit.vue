@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { getmain, editAccount, deleteAd, addAd } from '../../Api/api'
+import { getmain, editAccount, deleteAd, addAd } from '@/Api/api'
 export default {
   data() {
     return {

@@ -8,10 +8,10 @@
 </template>
 <script>
 
-import BigTitle from "../../../components/common/BigTitle.vue"
-import CommonMain from "../../components/commonMain.vue"
+import BigTitle from "@/components/common/BigTitle.vue"
+import CommonMain from "@/components/common/CommonContent.vue"
 export default {
-  name: "InvitedSpeakers",
+  name: "LatestNews",
   components: {BigTitle,  CommonMain},
   data() {
     return{
@@ -20,11 +20,11 @@ export default {
       new: {},
       resData: {
         current: 1,
-        newsCategoryId:28, //限定新闻类别
+        newsCategoryId:37, //限定新闻类别
         size: 1,
         index: 1
       },
-      titleId: 3
+      titleId: 5
     }
   },
   created() {
@@ -36,14 +36,5 @@ export default {
 </script>
 
 <style scoped>
-.home-introduction-content {
-  background-color: #ffffff;
-  line-height: 24px;
-  word-wrap: break-word;
-  padding: 20px;
-  margin: 10px 0;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  text-align: justify;
-  font-size: 16px;
-}
+
 </style>

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { fileUpload, update } from '../../Api/api'
+import { fileUpload, update } from '@/Api/api'
 export default {
   data() {
     return {
@@ -33,7 +33,7 @@ export default {
       let formData = new FormData()
       uploadImglist.forEach(item => {
         //ready状态的是未上传的 success是已经上传成功的，只需要添加未上传的即可
-        if (item.status == 'ready') {
+        if (item.status === 'ready') {
           formData.append('file', item.raw)
         }
       })
@@ -47,12 +47,11 @@ export default {
     handlePictureCardPreview(file) {
       this.dialogVisible = true
       this.dialogImageUrl = file.url
-      console.log(this.dialogImageUrl)
     },
     // 删除图片
     handleRemove(file) {
       //判断状态，如果是上传成功的 需要把id加到删除id集合里面
-      if (file.status == 'success') {
+      if (file.status === 'success') {
         this.delList.push(file.id)
       }
     },

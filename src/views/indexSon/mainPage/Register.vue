@@ -24,22 +24,25 @@
         <p><br></p>
         <p><a href="https://www.aischolar.org/attendees/toSignUp/EYUZNRN" target="_blank" title="参会注册">
           <span style="text-decoration: underline; color: #000000;">
-            <strong><img src="https://static.ais.cn/cms/editor/202003/372200316143632036.png" alt="Registration.png" style="width: 208px; height: 80px;" width="208" vspace="0" height="80" border="0">
+            <strong><img src="https://static.ais.cn/cms/editor/202003/372200316143632036.png"
+                         alt="Registration.png" style="width: 208px; height: 80px;" width="208" vspace="0" height="80" border="0">
             </strong></span></a>(English)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <a href="https://www.ais.cn/attendees/toSignUp/REQZI3" target="_blank"><img src="https://static.ais.cn/cms/editor/202003/372200316143632036.png" alt="Registration.png" style="width: 208px; height: 80px;" width="208" vspace="0" height="80" border="0">
+            <a href="https://www.ais.cn/attendees/toSignUp/REQZI3" target="_blank">
+              <img src="https://static.ais.cn/cms/editor/202003/372200316143632036.png"
+                   alt="Registration.png" style="width: 208px; height: 80px;" width="208" vspace="0" height="80" border="0">
             </a><strong>&nbsp;</strong>(Chinese)</p>
         <el-row>
           <div v-html="this.new.content" class="ql-editor"></div>
         </el-row>
       </el-card>
     </el-row>
-
   </div>
 </template>
 
 <script>
-import BigTitle from "../../components/common/BigTitle"
-import {getnew, getNewsList} from '../../Api/api'
+import BigTitle from "@/components/common/BigTitle.vue"
+import {getnew, getNewsList} from '@/Api/api'
+
 export default {
   name: "Register",
   components: {BigTitle},
@@ -50,13 +53,10 @@ export default {
       new: {},
       tableData: [{
         items: 'Regular Registration for Paper (4 pages)',
-        fee: '500 USD/ paper (4pages)'+
-          '3200 CNY/ paper (4pages)' ,
-
+        fee: '500 USD/ paper (4pages) 3200 CNY/ paper (4pages)' ,
       }, {
         items: '2016-05-04',
         fee: '王小虎',
-
       }]
     }
   },
@@ -73,30 +73,26 @@ export default {
       }
       getNewsList(data)
         .then(res => {
-          // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.newsList = res.data.records
             this.getalone(this.newsList[0].id)
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     },
-
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
-      const data = id
-      getnew(data)
+      getnew(id)
         .then(res => {
           // console.log(res);
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.new = res.data
-            console.log(this.new.content)  //在控制台输出信息
           }
         })
         .catch(error => {
-          console.log(error)
+
         })
     }
   }

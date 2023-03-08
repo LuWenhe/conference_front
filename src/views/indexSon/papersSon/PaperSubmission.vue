@@ -3,13 +3,13 @@
     <el-row>
       <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
-
   </div>
 </template>
 <script>
 
-import BigTitle from "../../../components/common/BigTitle.vue"
-import CommonMain from "../../components/commonMain.vue"
+import BigTitle from "@/components/common/BigTitle"
+import CommonMain from "@/components/common/CommonContent"
+
 export default {
   name: "CallForSpecialSessions",
   components: {BigTitle,  CommonMain},

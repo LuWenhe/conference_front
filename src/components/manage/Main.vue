@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { getNewsList, getnew, update, deleteNew, fuzzy } from '../../Api/api'
+import { getNewsList, getnew, update, deleteNew, fuzzy } from '@/Api/api'
 export default {
   data() {
     return {
