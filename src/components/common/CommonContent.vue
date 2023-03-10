@@ -33,7 +33,7 @@ export default {
       menuList: [],
       newsList: [],
       new: {}, //新闻对象
-      bigTitle: ['About DSKE 2023', 'Important Dates', 'Keynote Speakers', 'Publication'],
+      bigTitle: [],
     }
   },
   created() {

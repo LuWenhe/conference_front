@@ -82,7 +82,7 @@ export default {
     getnews() {
       const data = {
         current: 1,
-        newsCategoryId: 47, //限定新闻类别
+        newsCategoryId: 40, //限定新闻类别
         size: 5
       }
       getNewsList(data)

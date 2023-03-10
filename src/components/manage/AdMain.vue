@@ -99,7 +99,7 @@ export default {
       visible: false,
       editDialogVisible: false, //控制修改对话框的布尔值
       AdDialogVisible: false, //超管登录对话框
-      Ad: { username: '', password: '' }, //超管对象
+      Ad: {username: '', password: ''}, //超管对象
       editForm: {}, //查询到的新闻对象，目前仅供修改使用
       newsCategoryId: 1, //先存一个小标题id
       tableData: [], //新闻列表对象
@@ -109,7 +109,7 @@ export default {
       total: 0, //新闻总条数
       fuzzyShow: false, //模糊查询分页的显示(布尔值)
       fuzzytable: false, //模糊查询表格的显示
-      fuzzyForm: { fuzzytitle: '', fuzzytotal: 0, fuzzycurrent: 1, fuzzysize: 6 }, //模糊查询列表对象
+      fuzzyForm: {fuzzytitle: '', fuzzytotal: 0, fuzzycurrent: 1, fuzzysize: 6}, //模糊查询列表对象
       value: [],
       options: [
         {
@@ -126,7 +126,7 @@ export default {
             },
             {
               value: 44,
-              label: 'Keynote Speakers'
+              label: 'SCI Indexed Journals'
             },
             {
               value: 45,
@@ -134,7 +134,7 @@ export default {
             },
             {
               value: 46,
-              label: 'Publication'
+              label: 'Support'
             }
           ]
         },
@@ -262,8 +262,10 @@ export default {
       ]
     }
   },
-  created() {},
-  mounted() {},
+  created() {
+  },
+  mounted() {
+  },
   methods: {
     //修改对话框关闭的方法
     handleClose(done) {
@@ -271,11 +273,12 @@ export default {
         .then(_ => {
           done()
         })
-        .catch(_ => {})
+        .catch(_ => {
+        })
     },
     //跳转普通管理列表
     goAdEdit() {
-      this.$router.push({ path: 'adedit' })
+      this.$router.push({path: 'adedit'})
     },
     //级联选择器的方法
     handleChange(value) {
@@ -404,7 +407,7 @@ export default {
     },
     //查看
     look(id) {
-      this.$router.push({ path: 'news', query: { id: id } })
+      this.$router.push({path: 'news', query: {id: id}})
     },
     //超管登录对话框
     showAdDialog() {
@@ -444,7 +447,9 @@ export default {
           }
         })
       }
-      if (
+      if (this.newsCategoryId == 45) {
+        this.$router.push({path: '/administrator/editlunbo', query: {id: id, title: title}})
+      } else if (
         this.total == 1
         // (this.newsCategoryId == 42 && this.total == 1) ||
         // (this.newsCategoryId == 43 && this.total == 1) ||
@@ -475,11 +480,8 @@ export default {
         this.newsCategoryId == 41 ||
         this.newsCategoryId == 48
       ) {
-        this.$router.push({ path: '/administrator/edit', query: { id: id, title: title } })
+        this.$router.push({path: '/administrator/edit', query: {id: id, title: title}})
         console.log(this.newsCategoryId)
-      } else if (this.newsCategoryId == 45) {
-        this.$router.push({ path: '/administrator/editlunbo', query: { id: id, title: title } })
-        // console.log(this.newsCategoryId);
       } else {
         this.$message.error('请先选择新闻标题')
       }

@@ -20,8 +20,15 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import { container, ImageExtend, QuillWatch } from 'quill-image-extend-module'
-Quill.register('modules/ImageExtend', ImageExtend)
+Quill.register('modules/ImageExtend', ImageExtend);
+// import { imageResize } from 'quill-image-resize-module'
+// Quill.register('modules/imageResize', imageResize)
+
 // axios.defaults.withCredentials = true
+var fonts = ['SimSun', 'SimHei','Microsoft-YaHei','KaiTi','FangSong','Arial','Times-New-Roman','sans-serif'];
+var Font = Quill.import('formats/font');
+Font.whitelist = fonts; //将字体加入到白名单
+Quill.register(Font, true);
 
 export default {
   components: { quillEditor },
@@ -36,6 +43,14 @@ export default {
       editorOption: {
         placeholder: '请输入正文',
         modules: {
+          imageResize: {   //添加
+            displayStyles: {   //添加
+              backgroundColor: 'black',
+              border: 'none',
+              color: 'white'
+            },
+            modules: ['Resize', 'DisplaySize', 'Toolbar']   //添加
+          },
           ImageExtend: {
             // 如果不作设置，即{}  则依然开启复制粘贴功能且以base64插入
             name: 'file', // 图片参数名
@@ -50,11 +65,16 @@ export default {
               // axios.defaults.withCredentials = true;
               // xhr.setRequestHeader('Cookie','NMTID=00OVM6QOJcTDVhqDUtvgSnd-5FBxLcAAAF9nTiDHg; JSESSIONID=5ACC52D29A2434E09450CB975E08C288')
             }, // 可选参数 设置请求头部
-            sizeError: () => {}, // 图片超过大小的回调
-            start: () => {}, // 可选参数 自定义开始上传触发事件
-            end: () => {}, // 可选参数 自定义上传结束触发的事件，无论成功或者失败
-            error: () => {}, // 可选参数 上传失败触发的事件
-            success: () => {}, // 可选参数  上传成功触发的事件
+            sizeError: () => {
+            }, // 图片超过大小的回调
+            start: () => {
+            }, // 可选参数 自定义开始上传触发事件
+            end: () => {
+            }, // 可选参数 自定义上传结束触发的事件，无论成功或者失败
+            error: () => {
+            }, // 可选参数 上传失败触发的事件
+            success: () => {
+            }, // 可选参数  上传成功触发的事件
             change: (xhr, formData) => {
               // formData.append('token', 'myToken')
             } // 可选参数 每次选择图片触发，也可用来设置头部，但比headers多了一个参数，可设置formData
@@ -71,19 +91,22 @@ export default {
               [{ size: ['small', false, 'large', 'huge'] }], // 字体大小
               [{ header: [1, 2, 3, 4, 5, 6, false] }], // 几级标题
               [{ color: [] }, { background: [] }], // 字体颜色，字体背景颜色
-              [{ font: [] }], // 字体
+              [{ font: fonts }], // 字体
               [{ align: [] }], // 对齐方式
               ['clean'], // 清除字体样式
-              ['image'] // 上传图片、上传视频
+              ['image','link'] // 上传图片、上传视频
             ],
+
             handlers: {
-              image: function() {
+              image: function () {
                 // 劫持原来的图片点击按钮事件
                 QuillWatch.emit(this.quill.id)
               }
             }
           }
-        }
+        },
+        theme:'snow'
+
       }, // 编辑器新闻对象
       fileList: []
     }

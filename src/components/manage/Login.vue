@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form class="login-form" :model="loginForm">
-      <h3 class="title">新闻管理平台</h3>
+      <h3 class="title">ICDSKE 2023 会议新闻管理平台</h3>
       <el-form-item>
         <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid" type="text" placeholder="账号"></el-input>
       </el-form-item>
@@ -16,7 +16,7 @@
       </el-form-item>
     </el-form>
     <div class="el-login-fotter">
-      <span>Copyright © mingms.</span>
+      <span>ICDSKE 2023 Management platform.</span>
     </div>
   </div>
 </template>
