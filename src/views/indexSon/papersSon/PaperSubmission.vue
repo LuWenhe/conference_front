@@ -3,6 +3,14 @@
     <el-row>
       <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
+    <el-row>
+      <el-card>
+        <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2Ficais2022" target="_blank" title="投稿">
+          <span style="text-decoration: underline; color: #0000FF;">
+            <strong>Make a submission
+            </strong></span></a>
+      </el-card>>
+    </el-row>
   </div>
 </template>
 <script>

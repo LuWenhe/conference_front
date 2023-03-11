@@ -22,7 +22,8 @@
           </el-table>
         </el-row>
         <p><br></p>
-        <p><a href="https://www.aischolar.org/attendees/toSignUp/EYUZNRN" target="_blank" title="参会注册">
+        <p>
+          <a href="https://www.aischolar.org/attendees/toSignUp/EYUZNRN" target="_blank" title="参会注册">
           <span style="text-decoration: underline; color: #000000;">
             <strong><img src="https://static.ais.cn/cms/editor/202003/372200316143632036.png"
                          alt="Registration.png" style="width: 208px; height: 80px;" width="208" vspace="0" height="80" border="0">
@@ -55,9 +56,13 @@ export default {
         items: 'Regular Registration for Paper (4 pages)',
         fee: '500 USD/ paper (4pages) 3200 CNY/ paper (4pages)' ,
       }, {
-        items: '2016-05-04',
-        fee: '王小虎',
-      }]
+        items: 'Regular Registration(4 pages)',
+        fee: '490 USD/ paper (4 pages)',
+      },
+        {
+          items: 'Student Registration',
+          fee: '440 USD/ paper (4 pages)',
+        }]
     }
   },
   created() {

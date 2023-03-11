@@ -4,11 +4,11 @@
     <el-header class="index-header">
       <el-row class="index-top">
         <el-row class="index-top-img">
-          <img src="https://fhk.ais.cn/cms/website/common/202207/350220701145230648.png" alt="">
+          <img src="../assets/images/home.png" >
         </el-row>
-        <el-row class="index-top-title">
-          <span>2023 International Conference on Data Science and Knowledge Engineering (DSKE 2023)</span>
-        </el-row>
+<!--        <el-row class="index-top-title">-->
+<!--          <span>2023 International Conference on Data Science and Knowledge Engineering (DSKE 2023)</span>-->
+<!--        </el-row>-->
       </el-row>
     </el-header>
     <!-- 导航栏 -->
@@ -21,7 +21,7 @@
     </el-main>
     <!-- 主页尾部 -->
     <el-footer class="index-footer">
-      <span>Copyright © 2023 | 2023 International Conference on Data Science and Knowledge Engineering (DSKE 2023)</span>
+      <span>Copyright © 2023 | 2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023)</span>
     </el-footer>
   </el-container>
 </template>
@@ -87,7 +87,7 @@ export default {
   }
 
   .index-header {
-    height: 85% !important;
+    height: 140px !important;
     padding: 0;
   }
 
@@ -108,7 +108,8 @@ export default {
   }
 
   .index-top {
-    height: 80px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -116,7 +117,8 @@ export default {
   }
 
   .index-top-img img {
-    height: 60px;
+    width: 1519px;
+    height: 193px !important;
   }
 
   .index-top-title{

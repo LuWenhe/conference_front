@@ -3,7 +3,7 @@
     <el-row>
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
-        <ul class=" list-paddingleft-2" style="width: 1101.05px;"><li><p><strong>Agenda of</strong><strong>&nbsp;DSKE 2023</strong></p></li></ul>
+        <ul class=" list-paddingleft-2" style="width: 1101.05px;"><li><p><strong>Agenda of</strong><strong>&nbsp;ICDSKE 2023</strong></p></li></ul>
         <p style="text-align: justify;"><br style="white-space: normal;"></p>
         <p style="text-align: justify;"><span style="color: #000000;">
           <strong>2023 1th International Conference on Data Science and Knowledge Engineering (ICDSKE 2023) will be held on August, 2023 in Xiong’an New Area in Beijing, China. </strong>&nbsp;The following information about the schedule is for your reference.</span></p>
