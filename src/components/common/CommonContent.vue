@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <el-row>
-      <big-title :title="bigTitle[this.resData.index]"></big-title>
-      <el-card class="box-card">
-        <el-col>
-          <div v-html="this.new.content" class="ql-editor"></div>
-        </el-col>
-      </el-card>
-    </el-row>
-  </div>
+  <el-row>
+    <big-title :title="bigTitle[this.resData.index]"></big-title>
+    <el-card class="box-card">
+      <el-col>
+        <div v-html="this.new.content" class="ql-editor"></div>
+      </el-col>
+    </el-card>
+  </el-row>
 </template>
 
 <script>
@@ -17,16 +15,16 @@ import {getMinTitle, getnew, getNewsList} from '@/Api/api'
 
 export default {
   name: "commonMain",
-  components: { BigTitle },
-  props:{
-      resData:{
-          type:Object,
-          default:{}
-      },
-      titleId: {
-        type:Number,
-        default:''
-      }
+  components: {BigTitle},
+  props: {
+    resData: {
+      type: Object,
+      default: {}
+    },
+    titleId: {
+      type: Number,
+      default: ''
+    }
   },
   data() {
     return {
@@ -37,12 +35,12 @@ export default {
     }
   },
   created() {
-    console.log('this', this.resData,this.titleId)
+    console.log('this', this.resData, this.titleId)
     this.getTitle()
   },
   methods: {
     //获取小标题id
-    getTitle(){
+    getTitle() {
       const data = this.titleId
       getMinTitle(data)
         .then(res => {
@@ -63,15 +61,15 @@ export default {
     getnews(item) {
       const data = {
         current: 1,
-        newsCategoryId:item.id , //限定新闻类别
+        newsCategoryId: item.id, //限定新闻类别
         size: 5
       }
       getNewsList(data).then(res => {
-          if (res.code === 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
+        if (res.code === 200) {
+          this.newsList = res.data.records
+          this.getalone(this.newsList[0].id)
+        }
+      })
         .catch(error => {
 
         })
@@ -80,10 +78,10 @@ export default {
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
       getnew(id).then(res => {
-          if (res.code === 200) {
-            this.new = res.data
-          }
-        })
+        if (res.code === 200) {
+          this.new = res.data
+        }
+      })
         .catch(error => {
 
         })
@@ -95,10 +93,10 @@ export default {
 </script>
 
 <style scoped>
-  .home-title span {
-    font-size: 24px;
-    font-weight: 500;
-    margin-left: 20px;
-    color: rgba(51, 51, 51, 1);
-  }
+.home-title span {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 20px;
+  color: rgba(51, 51, 51, 1);
+}
 </style>
