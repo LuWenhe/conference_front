@@ -4,11 +4,8 @@
     <el-header class="index-header">
       <el-row class="index-top">
         <el-row class="index-top-img">
-          <img src="../assets/images/home.png" >
+          <img src="../assets/images/home.png"  alt="">
         </el-row>
-<!--        <el-row class="index-top-title">-->
-<!--          <span>2023 International Conference on Data Science and Knowledge Engineering (DSKE 2023)</span>-->
-<!--        </el-row>-->
       </el-row>
     </el-header>
     <!-- 导航栏 -->
@@ -94,7 +91,6 @@ export default {
   .index-main {
     height: 100% !important;
     padding: 0;
-    /*margin-top: -1px;*/
   }
 
   .index-footer {

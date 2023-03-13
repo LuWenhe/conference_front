@@ -8,7 +8,6 @@
         </el-col>
       </el-card>
     </el-row>
-
   </div>
 </template>
 
@@ -70,5 +69,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .chinese-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>

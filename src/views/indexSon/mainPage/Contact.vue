@@ -68,5 +68,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .contact-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>

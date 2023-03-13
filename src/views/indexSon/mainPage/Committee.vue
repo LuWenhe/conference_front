@@ -68,5 +68,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .committee-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>

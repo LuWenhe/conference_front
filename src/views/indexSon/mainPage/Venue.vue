@@ -63,5 +63,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .venue-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>

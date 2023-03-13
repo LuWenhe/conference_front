@@ -3,7 +3,6 @@
     <el-row>
       <common-main :resData="resData" :titleId="titleId"></common-main>
     </el-row>
-
   </div>
 </template>
 <script>

@@ -119,8 +119,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <style scoped>
@@ -144,7 +142,7 @@ export default {
 
   .home-box-bottom {
     margin: 0 auto;
-    width: 60%;
+    width: 80%;
   }
 
   .home-title span {

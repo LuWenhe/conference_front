@@ -105,5 +105,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .register-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>
