@@ -3,7 +3,7 @@
     <el-row>
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
-        <p><span style="color: #000000;"><strong>For the publication in the conference proceedings:</strong></span></p>
+        <p><span style="color: #000000;"><strong>The conference registration fees for participants are as follows:</strong></span></p>
         <p> &nbsp;</p>
         <el-row>
           <el-table
@@ -57,17 +57,18 @@ export default {
       newList: [],
       new: {},
       tableData: [{
-        items: 'Regular Registration for Paper (4 pages)',
-        fee: '500 USD/ paper (4pages) 2500 CNY/ paper (4pages)' ,
-      }, {
-        items: 'Regular Registration(4 pages)',
-        fee: '490 USD/ paper (4 pages)',
-      },
-        {
-          items: 'Student Registration',
-          fee: '440 USD/ paper (4 pages)',
-        }]
-    }
+        items: 'Registration Fee',
+        fee: '550 USD (3500 RMB)' ,
+      // }, {
+      //   items: 'Regular Registration(4 pages)',
+      //   fee: '490 USD/ paper (4 pages)',
+      // },
+      //   {
+      //     items: 'Student Registration',
+      //     fee: '440 USD/ paper (4 pages)',
+      //   }]
+    }]
+  }
   },
   created() {
     this.getnews()

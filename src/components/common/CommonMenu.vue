@@ -30,10 +30,10 @@
     <el-submenu index="4">
       <template slot="title">Papers</template>
       <el-menu-item index="/papers/cpf">Call For Papers</el-menu-item>
-
       <el-menu-item index="/papers/ps">Paper Submission</el-menu-item>
+      <el-menu-item index="/papers/pb">Publication</el-menu-item>
       <el-menu-item index="/papers/cfss">Special Sessions</el-menu-item>
-<!--      <el-menu-item index="/papers/id">Important Dates</el-menu-item>-->
+
     </el-submenu>
     <el-submenu index="5">
       <template slot="title">Attendees</template>

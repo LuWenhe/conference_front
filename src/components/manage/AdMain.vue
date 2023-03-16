@@ -195,8 +195,8 @@ export default {
               label: 'Paper Submission'
             },
             {
-              value: 49,
-              label: 'Important Dates'
+              value: 50,
+              label: 'Publication'
             }
           ]
         },
@@ -478,7 +478,8 @@ export default {
         this.newsCategoryId == 39 ||
         this.newsCategoryId == 40 ||
         this.newsCategoryId == 41 ||
-        this.newsCategoryId == 48
+        this.newsCategoryId == 48||
+        this.newsCategoryId == 50
       ) {
         this.$router.push({path: '/administrator/edit', query: {id: id, title: title}})
         console.log(this.newsCategoryId)
