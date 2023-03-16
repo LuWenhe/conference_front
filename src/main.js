@@ -34,6 +34,19 @@ axios.interceptors.request.use(config => {
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  document.title = '2023 1th International Conference on Data Science and Knowledge Engineering (ICDSKE 2023)'
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (to.path === '/administrator/main' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/admain' && !tokenStr) return next('/login')
+  if (to.path === '/administrator' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/edit' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/welcome' && !tokenStr) return next('/login')
+  // if (!tokenStr) return next('/login')
+  next()
+})
+
 new Vue({
   router,
   render: h => h(App)

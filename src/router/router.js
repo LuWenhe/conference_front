@@ -149,17 +149,6 @@ const router = new Router({
   ],
   mode: 'history'
 })
-// 挂载路由导航守卫
-router.beforeEach((to, from, next) => {
-  const tokenStr = window.sessionStorage.getItem('token')
-  if (to.path === '/administrator/main' && !tokenStr) return next('/login')
-  if (to.path === '/administrator/admain' && !tokenStr) return next('/login')
-  if (to.path === '/administrator' && !tokenStr) return next('/login')
-  if (to.path === '/administrator/edit' && !tokenStr) return next('/login')
-  if (to.path === '/administrator/welcome' && !tokenStr) return next('/login')
-  // if (!tokenStr) return next('/login')
-  next()
-})
 
 export default router
 
