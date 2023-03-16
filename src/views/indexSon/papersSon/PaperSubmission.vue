@@ -5,10 +5,23 @@
     </el-row>
     <el-row>
       <el-card>
-        <a href="https://cmt3.research.microsoft.com/ICDSKE2023" target="_blank" title="投稿">
-          <span style="text-decoration: underline; color: #0000FF;">
-            <strong>Submission System
-            </strong></span></a>
+<!--        <a href="https://cmt3.research.microsoft.com/ICDSKE2023" target="_blank" title="投稿">-->
+<!--          <span style="text-decoration: underline; color: #0000FF;">-->
+<!--            <strong>Submission System-->
+<!--            </strong></span></a>-->
+
+         <el-row :gutter="100">
+           <el-col class="col1">
+        <a class="fast" href="https://cmt3.research.microsoft.com/ICDSKE2023" target="_blank">
+          <p class="co-title  color-change" id="button2" onmousemove="stopColor('1','button2')" onmouseout="stopColor('3','button2')" style="color: white;">Submission System</p>
+        </a>
+           </el-col>
+           <el-col class="col1">
+            <a class="fast" href="https://maifile.cn/est/d2406789732267/pdf" target="_blank">
+              <p class="co-title  color-change" id="button1" onmousemove="stopColor('1','button1')" onmouseout="stopColor('3','button1')" style="color: white;">Template Download</p>
+            </a>
+           </el-col>
+        </el-row>
       </el-card>
     </el-row>
   </div>
@@ -53,5 +66,37 @@ export default {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   text-align: justify;
   font-size: 16px;
+}
+a {
+  color: #333;
+  text-decoration: none;
+
+}
+
+.fast > p {
+  width: 248px;
+  height: 48px;
+  border-radius: 24px;
+  justify-content: center;
+  padding-left: 0;
+  margin-bottom: 15px;
+}
+.color-change {
+  background: #157CAB !important;
+}
+.co-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: PingFangSC-Medium,PingFang SC;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-right: 23px;
+  min-width: 132px;
+}
+.col1{
+  width: 248px;
+  height: 48px;
+  padding-left: 5px;
 }
 </style>

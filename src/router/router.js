@@ -28,7 +28,8 @@ import Login from "../components/manage/Login";
 import Main from "../components/manage/Main";
 import Welcome from "../components/manage/Welcome";
 import News from "@/components/manage/News";
-import EditInfo from "@/components/manage/EditInfo"
+import EditInfo from "@/components/manage/EditInfo";
+import Publication from "@/views/indexSon/papersSon/Publication"
 
 Vue.use(Router)
 
@@ -100,10 +101,10 @@ const router = new Router({
               path: 'ps',
               component: PaperSubmission
             },
-            // {
-            //   path: 'id',
-            //   component: ImportantDates
-            // }
+            {
+              path: 'pb',
+              component: Publication
+            }
           ]
         },
         {
