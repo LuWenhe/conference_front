@@ -21,14 +21,14 @@ import LatestNews from "@/views/indexSon/attendeesSon/LatestNews";
 import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions";
 import AdEdit from "../components/manage/AdEdit";
 import AdMain from "../components/manage/AdMain";
-import Administrator from "../components/manage/AdminHome";
+import AdminHome from "../components/manage/AdminHome";
 import Edit from "../components/manage/Edit";
 import EditLunBo from "../components/manage/EditLunBo";
 import Login from "../components/manage/Login";
 import Main from "../components/manage/Main";
 import Welcome from "../components/manage/Welcome";
 import News from "@/components/manage/News";
-import Publication from "../views/indexSon/papersSon/Publication";
+import EditInfo from "@/components/manage/EditInfo"
 
 Vue.use(Router)
 
@@ -37,7 +37,7 @@ const router = new Router({
     { path: '/login', component: Login },
     {
       path: '/administrator',
-      component: Administrator, //跳转到组件
+      component: AdminHome, //跳转到组件
       children: [
         { path: 'welcome', component: Welcome },
         { path: 'main', component: Main },
@@ -45,7 +45,8 @@ const router = new Router({
         { path: 'news', component: News },
         { path: 'editlunbo', component: EditLunBo },
         { path: 'admain', component: AdMain },
-        { path: 'adedit', component: AdEdit }
+        { path: 'adedit', component: AdEdit },
+        { path: 'editInfo', component: EditInfo}
       ]
     },
     {
@@ -99,10 +100,10 @@ const router = new Router({
               path: 'ps',
               component: PaperSubmission
             },
-            {
-              path: 'pb',
-              component: Publication
-            }
+            // {
+            //   path: 'id',
+            //   component: ImportantDates
+            // }
           ]
         },
         {

@@ -1,11 +1,10 @@
 <!--修改新闻-->
 <template>
   <div class="box">
-    <el-row
-      ><h3 style="margin-top: 0px">{{ $route.query.title }}</h3></el-row
-    >
+    <el-row><h3 style="margin-top: 0">{{ $route.query.title }}</h3></el-row>
     新闻标题：<el-input v-model="title" placeholder="请输入新闻标题"></el-input><br /><br />
-    发布日期：<el-date-picker format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" v-model="releaseTime" placeholder="请选择新闻发布日期"></el-date-picker><br /><br />
+    发布日期：<el-date-picker format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" v-model="releaseTime"
+                             placeholder="请选择新闻发布日期"></el-date-picker><br /><br />
     新闻内容：<quill-editor ref="text" v-model="content" class="myQuillEditor" :options="editorOption" />
     <el-row style="margin-top:50px;">
       <el-button type="success" @click="submit">发布</el-button>
@@ -14,7 +13,7 @@
 </template>
 <script>
 // import axios from 'axios'
-import { add, fileUpload, login } from '@/Api/api'
+import {add, addContent, fileUpload, login} from '@/Api/api'
 import { quillEditor, Quill } from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'

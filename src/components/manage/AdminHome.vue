@@ -3,7 +3,7 @@
     <el-header>
       <div>
         <img src="../../assets/images/logo.jpg" alt="" />
-        <span>新闻后台管理系统</span>
+        <span>会议论文投稿后端系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>

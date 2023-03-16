@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import { getnew } from '../../Api/api'
+import { getnew } from '@/Api/api'
 export default {
   name: 'noticeMessage',
   data() {

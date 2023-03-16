@@ -4,7 +4,7 @@
     <el-row>
       <el-carousel class="home-carousel" :interval="5000" arrow="always" height="100%">
         <el-carousel-item v-for="(item, index) in bannerList" :key="index">
-          <img class="carousel-img" :src="'http://localhost:7070/' + item.picturePath" alt="">
+          <img class="carousel-img" :src="item.picturePath" alt="">
         </el-carousel-item>
       </el-carousel>
     </el-row>

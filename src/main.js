@@ -11,6 +11,8 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import Quill from 'quill'
 import imageResize from 'quill-image-resize'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 window.Quill = Quill
 Quill.register('modules/imageResize', imageResize)
 
@@ -19,8 +21,7 @@ Quill.register('modules/imageResize', imageResize)
 // Font.whitelist = fonts; //将字体加入到白名单
 // Quill.register(Font, true);
 Vue.use(VueQuillEditor)
-
-
+Vue.use(mavonEditor)
 
 axios.defaults.withCredentials = true
 axios.interceptors.request.use(config => {

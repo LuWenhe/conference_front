@@ -42,7 +42,7 @@ export default {
             action: 'http://localhost:7070/uploading',
             response: res => {
               console.log(res)
-              return 'http://localhost:7070/' + res.data
+              return 'http://localhost:8084/' + res.data
             },
             headers: xhr => {
               // axios.defaults.withCredentials = true;
@@ -110,7 +110,7 @@ export default {
       add(data, fd).then(res => {
         console.log(res)
         console.log(this.newsCategoryId)
-        if (res.code != 200) {
+        if (res.code !== 200) {
           return this.$message.error('发布新闻失败，请重试！')
         } else {
           this.$message.success('新闻发布成功！')

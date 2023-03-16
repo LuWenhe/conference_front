@@ -76,7 +76,8 @@
             <el-input v-model="editForm.title"></el-input>
           </el-form-item>
           <el-form-item label="发布日期:">
-            <el-date-picker v-model="editForm.releaseTime" type="date" placeholder="请选择发布日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
+            <el-date-picker v-model="editForm.releaseTime" type="date" placeholder="请选择发布日期"
+                            format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
@@ -448,7 +449,7 @@ export default {
         })
       }
       if (this.newsCategoryId == 45) {
-        this.$router.push({path: '/administrator/editlunbo', query: {id: id, title: title}})
+        this.$router.push({path: '/administrator/editInfo', query: {id: id, title: title}})
       } else if (
         this.total == 1
         // (this.newsCategoryId == 42 && this.total == 1) ||
@@ -481,7 +482,7 @@ export default {
         this.newsCategoryId == 48||
         this.newsCategoryId == 50
       ) {
-        this.$router.push({path: '/administrator/edit', query: {id: id, title: title}})
+        this.$router.push({path: '/administrator/editInfo', query: {id: id, title: title}})
         console.log(this.newsCategoryId)
       } else {
         this.$message.error('请先选择新闻标题')

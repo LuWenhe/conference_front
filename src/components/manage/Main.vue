@@ -193,8 +193,8 @@ export default {
               label: 'Paper Submission'
             },
             {
-              value: 50,
-              label: 'Publication'
+              value: 49,
+              label: 'Important Dates'
             }
           ]
         },
@@ -464,10 +464,10 @@ export default {
         this.newsCategoryId == 48||
         this.newsCategoryId == 50
       ) {
-        this.$router.push({ path: '/administrator/edit', query: { id: id, title: title } })
+        this.$router.push({ path: '/administrator/editInfo', query: { id: id, title: title } })
         console.log(this.newsCategoryId)
       } else if (this.newsCategoryId == 45) {
-        this.$router.push({ path: '/administrator/editlunbo', query: { id: id, title: title } })
+        this.$router.push({ path: '/administrator/editInfo', query: { id: id, title: title } })
         // console.log(this.newsCategoryId);
       } else {
         this.$message.error('请先选择新闻标题')

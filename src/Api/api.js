@@ -59,8 +59,22 @@ export const add = (data, fd) => {
   return request({
     method: 'POST',
     url: '/news/add',
-    params: data,
-    data: fd
+    data: formData,
+    params: data
+  })
+}
+export const addImg = (formData) => {
+  return request({
+    method: 'POST',
+    url: '/news/addImage',
+    data: formData
+  })
+}
+export const addContent = data => {
+  return request({
+    method: 'POST',
+    url: '/news/addContent',
+    params: data
   })
 }
 // 登录
