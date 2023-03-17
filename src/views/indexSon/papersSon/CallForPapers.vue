@@ -25,7 +25,7 @@
       </tr>
       </tbody>
     </table>
-      <p>2.Digit Science</p>
+      <p>2.Data Science</p>
       <p>&nbsp </p>
       <table class="UEditorTable">
         <tbody>
