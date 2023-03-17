@@ -14,7 +14,7 @@
         <el-row :gutter="40">
           <el-col :span="4">
             <!-- 添加新闻按钮 -->
-            <el-button el-button class="add" type="success" icon="el-icon-plus" @click="goEdit(newsCategoryId)">点击在该列表下添加一条新闻</el-button>
+            <el-button el-button class="add" type="success" icon="el-icon-plus" @click="addNewInfo(newsCategoryId)">点击在该列表下添加一条新闻</el-button>
           </el-col>
           <el-col :span="10">
             <!-- 新闻搜索 -->
@@ -43,6 +43,7 @@
               <div>
                 <el-button type="success" @click="look(scope.row.id)">查看</el-button>
                 <el-button type="warning" @click="showEditDialog(scope.row.id)">修改</el-button>
+                <el-button type="warning" @click="modifyInfo(scope.row.id)">修改内容</el-button>
                 <el-button type="info" @click="deleteNews(scope.row.id)">删除</el-button>
               </div>
             </template>
@@ -147,23 +148,6 @@ export default {
               value: 47,
               label: 'committee'
             }]
-          //   {
-          //     value: 28,
-          //     label: '章程'
-          //   },
-          //   {
-          //     value: 29,
-          //     label: '组织结构'
-          //   },
-          //   {
-          //     value: 30,
-          //     label: '工作职责'
-          //   },
-          //   {
-          //     value: 31,
-          //     label: '专职人员'
-          //   }
-          // ]
         },
         {
           value: 3,
@@ -313,7 +297,7 @@ export default {
     showEditDialog(id) {
       getnew(id).then(res => {
         // console.log(res);
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editForm = res.data
         }
       })
@@ -328,7 +312,7 @@ export default {
       }
       update(data).then(res => {
         console.log('dsadasas', res)
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editDialogVisible = false
           this.$message.success('修改新闻成功！')
           this.query(this.newsCategoryId)
@@ -374,6 +358,31 @@ export default {
       this.fuzzytable = false
       this.gettable = true
     },
+    modifyInfo(newId) {
+      let title = ''
+
+      if ((this.value.length = 2)) {
+        let t = this.value[0]
+        let i = this.value[1]
+        this.options.forEach(item => {
+          if (item.value === t) {
+            title += item.label + '/'
+            item.children.forEach(e => {
+              if (e.value === i) title += e.label
+            })
+          }
+        })
+      }
+
+      this.$router.push({
+        path: '/administrator/editInfo',
+        query: {
+          newCategoryId: this.newsCategoryId,
+          newId: newId,
+          title: title
+        }
+      })
+    },
     //根据id删除新闻
     async deleteNews(id) {
       // console.log(id);
@@ -390,14 +399,12 @@ export default {
       if (res !== 'confirm') {
         return this.$message.info('已取消删除~')
       } else {
-        console.log(id)
         const data = {
           id: id
         }
         //参数data 要以对象的形式传入
         deleteNew(data).then(res => {
-          console.log('>>>' + res)
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message.success('删除新闻成功！')
             this.query(this.newsCategoryId)
           } else {
@@ -432,58 +439,33 @@ export default {
       this.fuzzyForm.fuzzysize = val
       this.fuzzyList(this.fuzzyForm.fuzzytitle) //模糊查询
     },
-    //去往添加编辑页面
-    goEdit(id) {
+    // 添加信息
+    addNewInfo(newCategoryId) {
       let title = ''
-      console.log(this.value)
+
       if ((this.value.length = 2)) {
         let t = this.value[0]
         let i = this.value[1]
         this.options.forEach(item => {
-          if (item.value == t) {
+          if (item.value === t) {
             title += item.label + '/'
             item.children.forEach(e => {
-              if (e.value == i) title += e.label
+              if (e.value === i) title += e.label
             })
           }
         })
       }
-      if (this.newsCategoryId == 45) {
-        this.$router.push({path: '/administrator/editInfo', query: {id: id, title: title}})
-      } else if (
-        this.total == 1
-        // (this.newsCategoryId == 42 && this.total == 1) ||
-        // (this.newsCategoryId == 43 && this.total == 1) ||
-        // (this.newsCategoryId == 46 && this.total == 1) ||
-        // (this.newsCategoryId == 47 && this.total == 1) ||
-        // (this.newsCategoryId == 27 && this.total == 1)||
-        // (this.newsCategoryId == 28 && this.total == 1) ||
-      ) {
+
+      if (this.total === 1) {
         this.$message.error('该新闻标题下只能存在一篇新闻')
-      } else if (
-        this.newsCategoryId == 42 ||
-        this.newsCategoryId == 43 ||
-        this.newsCategoryId == 44 ||
-        this.newsCategoryId == 46 ||
-        this.newsCategoryId == 47 ||
-        this.newsCategoryId == 27 ||
-        this.newsCategoryId == 28 ||
-        this.newsCategoryId == 29 ||
-        this.newsCategoryId == 30 ||
-        this.newsCategoryId == 31 ||
-        this.newsCategoryId == 49 ||
-        this.newsCategoryId == 35 ||
-        this.newsCategoryId == 36 ||
-        this.newsCategoryId == 37 ||
-        this.newsCategoryId == 38 ||
-        this.newsCategoryId == 39 ||
-        this.newsCategoryId == 40 ||
-        this.newsCategoryId == 41 ||
-        this.newsCategoryId == 48||
-        this.newsCategoryId == 50
-      ) {
-        this.$router.push({path: '/administrator/editInfo', query: {id: id, title: title}})
-        console.log(this.newsCategoryId)
+      } else if (this.newsCategoryId > 0) {
+        this.$router.push({
+          path: '/administrator/addInfo',
+          query: {
+            newCategoryId: newCategoryId,
+            title: title
+          }
+        })
       } else {
         this.$message.error('请先选择新闻标题')
       }
@@ -493,13 +475,15 @@ export default {
 </script>
 
 <style lang="less">
-.add {
-  margin-bottom: 10px !important;
-}
-.block {
-  margin-bottom: 10px;
-}
-.el-pagination {
-  margin-top: 10px;
-}
+  .add {
+    margin-bottom: 10px !important;
+  }
+
+  .block {
+    margin-bottom: 10px;
+  }
+
+  .el-pagination {
+    margin-top: 10px;
+  }
 </style>

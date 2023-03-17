@@ -101,7 +101,7 @@ export default {
       fd.append('pictureFile', this.pictureFile)
       const data = {
         newsCategoryId: this.newsCategoryId,
-        content: this.content,
+        content: this.htmlContent,
         releaseTime: this.releaseTime,
         title: this.title
       }
@@ -113,7 +113,6 @@ export default {
           return this.$message.error('发布新闻失败，请重试！')
         } else {
           this.$message.success('新闻发布成功！')
-          console.log(this.content)
           this.$router.go(-1)
         }
       })

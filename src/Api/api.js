@@ -24,10 +24,10 @@ export const getNewsList = data => {
   })
 }
 // 获取只有一篇新闻
-export const getnew = data => {
+export const getnew = id => {
   return request({
     method: 'GET',
-    url: `/news/main/${data}`
+    url: `/news/main/${id}`
   })
 }
 // 修改新闻
@@ -35,7 +35,7 @@ export const update = data => {
   return request({
     method: 'POST',
     url: '/news/update',
-    params: data
+    data: data
   })
 }
 // 删除新闻
@@ -70,11 +70,18 @@ export const addImg = (formData) => {
     data: formData
   })
 }
+export const deleteImg = (formData) => {
+  return request({
+    method: 'POST',
+    url: '/news/deleteImage',
+    data: formData
+  })
+}
 export const addContent = data => {
   return request({
     method: 'POST',
     url: '/news/addContent',
-    params: data
+    data: data
   })
 }
 // 登录

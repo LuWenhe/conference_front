@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-info-box">
+  <div class="add-info-box">
     <el-row><h3 style="margin-top: 0">{{ $route.query.title }}</h3></el-row>
     新闻标题：<el-input v-model="title" placeholder="请输入发布标题"></el-input><br /><br />
     发布日期：<el-date-picker format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd" v-model="releaseTime"
@@ -14,38 +14,42 @@
       </button>
     </mavon-editor>
     <el-row style="margin-top:50px;">
-      <el-button type="success" @click="editSubmit">更新</el-button>
+      <el-button type="success" @click="addSubmit">发布</el-button>
     </el-row>
   </div>
 </template>
 
 <script>
-import {addImg, getnew, update} from "@/Api/api"
+import {addContent, addImg, deleteImg} from "@/Api/api"
 export default {
   name: "EditInfo",
   data() {
     return {
       title: '',
       releaseTime: '',
-      mdContent: '',
       htmlContent: '',
+      mdContent: '',
       newsCategoryId: 0,
-      newId: 0,
       color1: ''
     }
   },
+  created() {
+    this.newsCategoryId = this.$route.query.newCategoryId
+  },
   methods: {
+    // 上传图片
     addImage(pos, file) {
-      let formData = new FormData();
-      formData.append('image', file);
+      let formData = new FormData()
+      formData.append('image', file)
 
-      // console.log(999)
       addImg(formData).then(res => {
+        console.log(res)
         if (res.code === 200) {
           this.$refs.md.$img2Url(pos, res.data)
         }
       })
     },
+    // 删除图片
     deleteImage(pos, file) {
 
     },
@@ -63,47 +67,30 @@ export default {
       const $vm = this.$refs.md
       $vm.insertText($vm.getTextareaDom(), insert_text)
     },
-    // 获取需要修改的新闻的信息
-    getNewInfo(id) {
-      getnew(id).then(res => {
-        if (res.code === 200) {
-          this.title = res.data.title
-          this.releaseTime = res.data.releaseTime
-          this.mdContent = res.data.mdContent
-          this.htmlContent = res.data.htmlContent
-        }
-      })
-    },
-    // 更新发布
-    editSubmit() {
+    addSubmit() {
       let newData = {
-        id: this.newId,
-        mdContent: this.mdContent,
+        newsCategoryId: this.newsCategoryId,
         htmlContent: this.htmlContent,
+        mdContent: this.mdContent,
         releaseTime: this.releaseTime,
         title: this.title
       }
 
-      update(JSON.stringify(newData)).then(res => {
+      addContent(JSON.stringify(newData)).then(res => {
         if (res.code !== 200) {
-          return this.$message.error('更新信息失败，请重试！')
+          return this.$message.error('发布信息失败，请重试！')
         } else {
-          this.$message.success('更新信息成功！')
+          this.$message.success('发布信息成功！')
           this.$router.go(-1)
         }
       })
-    },
-  },
-  created() {
-    this.newsCategoryId = this.$route.query.newCategoryId
-    this.newId = this.$route.query.newId
-    this.getNewInfo(this.newId)
+    }
   }
 }
 </script>
 
 <style scoped>
-  .edit-info-box {
+  .add-info-box {
     width: 1200px;
     margin: 0 auto;
   }

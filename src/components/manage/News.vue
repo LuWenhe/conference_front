@@ -30,7 +30,7 @@ export default {
       const data = this.$route.query.id
       getnew(data).then(res => {
         console.log(res)
-        this.content = res.data.content
+        this.content = res.data.htmlContent
         this.hits = res.data.hits
         this.releaseTime = res.data.releaseTime
         this.title = res.data.title

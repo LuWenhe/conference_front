@@ -119,11 +119,11 @@ export default {
     submit() {
       const data = {
         newsCategoryId: this.newsCategoryId,
-        content: this.content,
+        content: this.htmlContent,
         title: this.title,
         releaseTime: this.releaseTime
       }
-      console.log(this.content)
+
       // console.log(this.newsCategoryId);
       add(data).then(res => {
         console.log(res)
@@ -131,7 +131,6 @@ export default {
           return this.$message.error('发布新闻失败，请重试！')
         } else {
           this.$message.success('新闻发布成功！')
-          console.log(this.content)
           this.$router.go(-1)
         }
       })

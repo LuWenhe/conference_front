@@ -4,7 +4,7 @@
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
         <el-col>
-          <div v-html="this.new.content" class="ql-editor"></div>
+          <div v-html="this.content" class="ql-editor"></div>
         </el-col>
       </el-card>
     </el-row>
@@ -22,7 +22,7 @@ export default {
     return {
       bigTitle: ['committee'],
       newList: [],
-      new: {}
+      content: {}
     }
   },
   created() {
@@ -36,31 +36,26 @@ export default {
         newsCategoryId: 47, //限定新闻类别
         size: 5
       }
-      getNewsList(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code === 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
 
+      // 得到新闻集合
+      getNewsList(data).then(res => {
+        if (res.code === 200) {
+          let newId = res.data.records[0].id
+          this.getalone(newId)
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    },
     //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      getnew(id)
-        .then(res => {
-          if (res.code === 200) {
-            this.new = res.data
-            console.log(this.new.content)  //在控制台输出信息
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+    getalone(newId) {
+      getnew(newId).then(res => {
+        if (res.code === 200) {
+          this.content = res.data.htmlContent
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 
@@ -68,8 +63,8 @@ export default {
 </script>
 
 <style scoped>
-  .committee-box {
-    margin: 0 auto;
-    width: 80%;
-  }
+.committee-box {
+  margin: 0 auto;
+  width: 80%;
+}
 </style>

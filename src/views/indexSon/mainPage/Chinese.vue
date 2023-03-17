@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import BigTitle from "../../../components/common/BigTitle.vue"
-import {getnew, getNewsList} from '../../../Api/api'
+import BigTitle from "@/components/common/BigTitle.vue"
+import {getnew, getNewsList} from '@/Api/api'
 export default {
   name: "Chinese",
   components: {BigTitle},
@@ -35,8 +35,8 @@ export default {
         newsCategoryId:48 , //限定新闻类别
         size: 5
       }
-      getNewsList(data)
-        .then(res => {
+
+      getNewsList(data).then(res => {
           // console.log(res);
           if (res.code === 200) {
             this.newsList = res.data.records

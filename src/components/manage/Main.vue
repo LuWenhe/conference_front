@@ -12,7 +12,7 @@
         <el-row :gutter="40">
           <el-col :span="4">
             <!-- 添加新闻按钮 -->
-            <el-button el-button class="add" type="success" icon="el-icon-plus" @click="goEdit(newsCategoryId)">点击在该列表下添加一条新闻</el-button>
+            <el-button el-button class="add" type="success" icon="el-icon-plus" @click="addInfo(newsCategoryId)">点击在该列表下添加一条新闻</el-button>
           </el-col>
           <el-col :span="10">
             <!-- 新闻搜索 -->
@@ -37,10 +37,10 @@
           <el-table-column prop="id" label="id" width=""> </el-table-column>
           <el-table-column label="操作" width="">
             <template slot-scope="scope">
-              <!-- {{ scope.row.id }} -->
               <div>
                 <el-button type="success" @click="look(scope.row.id)">查看</el-button>
                 <el-button type="warning" @click="showEditDialog(scope.row.id)">修改</el-button>
+                <el-button type="warning" @click="modifyInfo(scope.row.id)">修改内容</el-button>
                 <el-button type="info" @click="deleteNews(scope.row.id)">删除</el-button>
               </div>
             </template>
@@ -74,10 +74,11 @@
             <el-input v-model="editForm.title"></el-input>
           </el-form-item>
           <el-form-item label="发布日期:">
-            <el-date-picker v-model="editForm.releaseTime" type="date" placeholder="请选择发布日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
-          </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
+            <el-date-picker v-model="editForm.releaseTime" type="date" placeholder="请选择发布日期"
+                            format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"></el-date-picker>
+            </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
           <el-button @click="editDialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="editNew()">确 定</el-button>
         </span>
@@ -144,23 +145,6 @@ export default {
               value: 47,
               label: 'committee'
             }]
-          //   {
-          //     value: 28,
-          //     label: '章程'
-          //   },
-          //   {
-          //     value: 29,
-          //     label: '组织结构'
-          //   },
-          //   {
-          //     value: 30,
-          //     label: '工作职责'
-          //   },
-          //   {
-          //     value: 31,
-          //     label: '专职人员'
-          //   }
-          // ]
         },
         {
           value: 3,
@@ -303,8 +287,7 @@ export default {
     //展示修改对话框
     showEditDialog(id) {
       getnew(id).then(res => {
-        // console.log(res);
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editForm = res.data
         }
       })
@@ -318,8 +301,7 @@ export default {
         title: this.editForm.title
       }
       update(data).then(res => {
-        console.log('dsadasas', res)
-        if (res.code == 200) {
+        if (res.code === 200) {
           this.editDialogVisible = false
           this.$message.success('修改新闻成功！')
           this.query(this.newsCategoryId)
@@ -329,7 +311,7 @@ export default {
     //模糊查询
     fuzzyList(title) {
       // console.log(title);
-      if (title == '') {
+      if (title === '') {
         return this.$message.error('请先输入查询新闻标题！')
       }
       this.fuzzyShow = true //模糊分页显示
@@ -388,7 +370,7 @@ export default {
         //参数data 要以对象的形式传入
         deleteNew(data).then(res => {
           console.log('>>>' + res)
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$message.success('删除新闻成功！')
             this.query(this.newsCategoryId)
           } else {
@@ -424,54 +406,55 @@ export default {
       this.fuzzyList(this.fuzzyForm.fuzzytitle) //模糊查询
     },
     //去往添加编辑页面
-    goEdit(id) {
+    addInfo(id) {
       let title = ''
-      console.log(this.value)
+
       if ((this.value.length = 2)) {
         let t = this.value[0]
         let i = this.value[1]
+
         this.options.forEach(item => {
-          if (item.value == t) {
+          if (item.value === t) {
             title += item.label + '/'
             item.children.forEach(e => {
-              if (e.value == i) title += e.label
+              if (e.value === i) title += e.label
             })
           }
         })
       }
-      if (
-        this.total == 1
-      ) {
+      if (this.total === 1) {
         this.$message.error('该新闻标题下只能存在一篇新闻')
-      } else if (
-        this.newsCategoryId == 42 ||
-        this.newsCategoryId == 43 ||
-        this.newsCategoryId == 44 ||
-        this.newsCategoryId == 46 ||
-        this.newsCategoryId == 47 ||
-        this.newsCategoryId == 27 ||
-        this.newsCategoryId == 28 ||
-        this.newsCategoryId == 29 ||
-        this.newsCategoryId == 30 ||
-        this.newsCategoryId == 31 ||
-        this.newsCategoryId == 49 ||
-        this.newsCategoryId == 35 ||
-        this.newsCategoryId == 37 ||
-        this.newsCategoryId == 38 ||
-        this.newsCategoryId == 39 ||
-        this.newsCategoryId == 40 ||
-        this.newsCategoryId == 41 ||
-        this.newsCategoryId == 48||
-        this.newsCategoryId == 50
-      ) {
-        this.$router.push({ path: '/administrator/editInfo', query: { id: id, title: title } })
-        console.log(this.newsCategoryId)
-      } else if (this.newsCategoryId == 45) {
-        this.$router.push({ path: '/administrator/editInfo', query: { id: id, title: title } })
-        // console.log(this.newsCategoryId);
+      } else if (this.newsCategoryId > 0) {
+        this.$router.push({path: '/administrator/editInfo', query: {id: id, title: title}})
       } else {
         this.$message.error('请先选择新闻标题')
       }
+    },
+    // 修改信息
+    modifyInfo(newId) {
+      let title = ''
+
+      if ((this.value.length = 2)) {
+        let t = this.value[0]
+        let i = this.value[1]
+        this.options.forEach(item => {
+          if (item.value === t) {
+            title += item.label + '/'
+            item.children.forEach(e => {
+              if (e.value === i) title += e.label
+            })
+          }
+        })
+      }
+
+      this.$router.push({
+        path: '/administrator/editInfo',
+        query: {
+          newCategoryId: this.newsCategoryId,
+          newId: newId,
+          title: title
+        }
+      })
     }
   }
 }

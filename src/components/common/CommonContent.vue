@@ -3,7 +3,7 @@
     <big-title :title="bigTitle[this.resData.index]"></big-title>
     <el-card class="box-card">
       <el-col>
-        <div v-html="this.new.content" class="ql-editor"></div>
+        <div v-html="this.content" class="ql-editor"></div>
       </el-col>
     </el-card>
   </el-row>
@@ -30,8 +30,8 @@ export default {
     return {
       menuList: [],
       newsList: [],
-      new: {}, //新闻对象
       bigTitle: [],
+      content: {}
     }
   },
   created() {
@@ -41,22 +41,18 @@ export default {
   methods: {
     //获取小标题id
     getTitle() {
-      const data = this.titleId
-      getMinTitle(data)
-        .then(res => {
-          if (res.code === 200) {
-            this.menuList = res.data
-            this.menuList.map(item => {
-              this.bigTitle.push(item.name)
-            })
-            this.getnews(this.menuList[this.resData.index])
-          }
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      getMinTitle(this.titleId).then(res => {
+        if (res.code === 200) {
+          this.menuList = res.data
+          this.menuList.map(item => {
+            this.bigTitle.push(item.name)
+          })
+          this.getnews(this.menuList[this.resData.index])
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     },
-
     //获取新闻列表
     getnews(item) {
       const data = {
@@ -64,27 +60,25 @@ export default {
         newsCategoryId: item.id, //限定新闻类别
         size: 5
       }
+
       getNewsList(data).then(res => {
         if (res.code === 200) {
-          this.newsList = res.data.records
-          this.getalone(this.newsList[0].id)
+          let newId = res.data.records[0].id
+          this.getalone(newId)
         }
-      })
-        .catch(error => {
+      }).catch(error => {
 
-        })
+      })
     },
-
     //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      getnew(id).then(res => {
+    getalone(newId) {
+      getnew(newId).then(res => {
         if (res.code === 200) {
-          this.new = res.data
+          this.content = res.data.htmlContent
         }
-      })
-        .catch(error => {
+      }).catch(error => {
 
-        })
+      })
     }
   }
 }
