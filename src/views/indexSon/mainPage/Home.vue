@@ -99,11 +99,6 @@
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
 import {getMinTitle, getNewsList, getnew} from '@/Api/api'
-// import sci1 from "@/assets/images/sci1.png"
-// import sci2 from "@/assets/images/sci2.png"
-// import sci3 from "@/assets/images/sci3.png"
-// import sci4 from "@/assets/images/sci4.png"
-// import sci5 from "@/assets/images/sci5.png"
 export default {
   name: "Home",
   components: {BigTitle},

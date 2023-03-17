@@ -41,8 +41,7 @@ export default {
             size: 10, // 可选参数 图片大小，单位为M，1M = 1024kb
             action: 'http://localhost:7070/uploading',
             response: res => {
-              console.log(res)
-              return 'http://localhost:8084/' + res.data
+              return 'http://localhost:8085/' + res.data
             },
             headers: xhr => {
               // axios.defaults.withCredentials = true;

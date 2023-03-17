@@ -61,8 +61,8 @@ export default {
   letter-spacing: 1px;
   line-height: 25px;
 }
-.ql-editor img {
-  width: 600px;
-  height: 400px;
-}
+/*.ql-editor img {*/
+/*  width: 600px;*/
+/*  height: 400px;*/
+/*}*/
 </style>

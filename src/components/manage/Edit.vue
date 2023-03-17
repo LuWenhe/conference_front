@@ -58,7 +58,7 @@ export default {
             action: 'http://localhost:7070/uploading',
             response: res => {
               console.log(res)
-              return 'http://localhost:7070/' + res.data
+              return 'http://localhost:8085/' + res.data
             },
             headers: xhr => {
               // axios.defaults.withCredentials = true;
