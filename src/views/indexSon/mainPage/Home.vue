@@ -33,7 +33,7 @@
                 <img src="@/assets/images/sci2.png" width="120" height="180"/>
               </th>
               <th>
-                <img src="@/assets/images/sci3.png" width="120" height="180"/>
+                <img src="@/assets/images/CSSE.png" width="120" height="180"/>
               </th>
               <th>
                 <img src="@/assets/images/sci4.png" width="120" height="180"/>
@@ -48,16 +48,15 @@
                     <a href="javascript:void(0);" @click="postOpenPlatform('https://www.techscience.com/journal/cmc')"> Computers,Materials & Continua</a>
                 </ul>
               </th>
-              <th width="120" height="80">
+              <th width="125" height="80">
                 <ul >
                     <a href="javascript:void(0);" @click="postOpenPlatform('https://www.techscience.com/journal/iasc')"> Intelligent Automation & Soft Computing</a>
                 </ul>
               </th>
-              <th width="120" height="80">
+              <th width="140" height="80">
                 <ul >
-                    <a href="javascript:void(0);" @click="postOpenPlatform('https://www.springer.com/series/7899')"> Communications
-                      in Computer and
-                      Information Science</a>
+                    <a href="javascript:void(0);" @click="postOpenPlatform('https://www.techscience.com/journal/csse')"> Computer Systems
+                      Science and Engineering</a>
                 </ul>
               </th>
               <th width="120" height="80">
@@ -79,7 +78,7 @@
                 <p style="color: mediumblue">ISSN:1079-8587</p>
               </th>
               <th>
-                <p style="color: mediumblue">ISSN:1865-0937</p>
+                <p style="color: mediumblue">ISSN:0267-6192</p>
               </th>
               <th width="130" height="60">
                 <p style="color: mediumblue">&nbsp;ISSN:2227-7390</p>
