@@ -22,8 +22,6 @@ import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSe
 import AdEdit from "../components/manage/AdEdit"
 import AdMain from "../components/manage/AdMain"
 import AdminHome from "../components/manage/AdminHome"
-import Edit from "../components/manage/Edit"
-import EditLunBo from "../components/manage/EditLunBo"
 import Login from "../components/manage/Login"
 import Main from "../components/manage/Main"
 import Welcome from "../components/manage/Welcome"
@@ -36,48 +34,9 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    { path: '/login', component: Login },
     {
-      path: '/administrator',
-      component: AdminHome, //跳转到组件
-      children: [
-        {
-          path: 'welcome',
-          component: Welcome
-        },
-        {
-          path: 'main',
-          component: Main
-        },
-        {
-          path: 'edit',
-          component: Edit
-        },
-        {
-          path: 'news',
-          component: News
-        },
-        {
-          path: 'editlunbo',
-          component: EditLunBo
-        },
-        {
-          path: 'admain',
-          component: AdMain
-        },
-        {
-          path: 'adedit',
-          component: AdEdit
-        },
-        {
-          path: 'addInfo',
-          component: AddInfo
-        },
-        {
-          path: 'editInfo',
-          component: EditInfo
-        }
-      ]
+      path: '/home',
+      redirect: '/'       // 当访问/home时重定向到/
     },
     {
       path: '/',
@@ -85,7 +44,7 @@ const router = new Router({
       redirect: '/home',
       children: [
         {
-          path: 'home',
+          path: '/',
           component: Home
         },
         {
@@ -173,6 +132,41 @@ const router = new Router({
         {
           path: 'contact',
           component: Contact
+        }
+      ]
+    },
+    {path: '/login', component: Login},
+    {
+      path: '/administrator',
+      component: AdminHome, //跳转到组件
+      children: [
+        {
+          path: 'welcome',
+          component: Welcome
+        },
+        {
+          path: 'main',
+          component: Main
+        },
+        {
+          path: 'news',
+          component: News
+        },
+        {
+          path: 'admain',
+          component: AdMain
+        },
+        {
+          path: 'adedit',
+          component: AdEdit
+        },
+        {
+          path: 'addInfo',
+          component: AddInfo
+        },
+        {
+          path: 'editInfo',
+          component: EditInfo
         }
       ]
     }
