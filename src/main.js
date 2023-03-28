@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
   if (to.path === '/administrator/main' && !tokenStr) return next('/login')
   if (to.path === '/administrator/admain' && !tokenStr) return next('/login')
   if (to.path === '/administrator' && !tokenStr) return next('/login')
-  if (to.path === '/administrator/edit' && !tokenStr) return next('/login')
+  if (to.path === '/administrator/editInfo' && !tokenStr) return next('/login')
   if (to.path === '/administrator/welcome' && !tokenStr) return next('/login')
   // if (!tokenStr) return next('/login')
   next()
