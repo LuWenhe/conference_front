@@ -6,7 +6,7 @@
         <ul class=" list-paddingleft-2" style="width: 1101.05px;"><p><strong>Agenda of</strong><strong>&nbsp;ICDSKE 2023</strong></p></ul>
         <p style="text-align: justify;"><br style="white-space: normal;"></p>
         <p style="text-align: justify;"><span style="color: #000000;">
-          <strong>2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023) will be held on August, 2023 in Xiong’an New Area in Beijing, China. </strong>&nbsp;The following information about the schedule is for your reference.</span></p>
+          <strong>2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023) will be held on August, 2023 in Zhengzhou city, Henan province, China. </strong>&nbsp;The following information about the schedule is for your reference.</span></p>
         <p style="text-align: justify;"><span style="color: #000000;"><br></span></p>
 <!--        <el-table-->
 <!--          :data="tableData"-->
