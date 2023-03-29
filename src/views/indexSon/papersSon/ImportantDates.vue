@@ -11,7 +11,7 @@ import BigTitle from "@/components/common/BigTitle"
 import CommonMain from "@/components/common/CommonContent"
 
 export default {
-  name: "CallForSpecialSessions",
+  name: "importanttime",
   components: {BigTitle,  CommonMain},
   data() {
     return{

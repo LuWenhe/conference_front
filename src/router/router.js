@@ -14,11 +14,11 @@ import Chinese from "../views/indexSon/mainPage/Chinese.vue"
 import InvitedSpeakers from "../views/indexSon/speakersSon/InvitedSpeakers.vue"
 import KeynoteSpeakers from "../views/indexSon/speakersSon/KeynoteSpeakers.vue"
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
-// import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
+import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
 import Accomodation from "@/views/indexSon/attendeesSon/Accomodation"
 import LatestNews from "@/views/indexSon/attendeesSon/LatestNews"
-import CallForSpecialSessions from "../views/indexSon/papersSon/CallForSpecialSessions"
+
 import AdEdit from "../components/manage/AdEdit"
 import AdMain from "../components/manage/AdMain"
 import AdminHome from "../components/manage/AdminHome"
@@ -82,8 +82,8 @@ const router = new Router({
               component: CallForPapers
             },
             {
-              path: 'cfss',
-              component: CallForSpecialSessions
+              path: 'imd',
+              component: ImportantDates
             },
             {
               path: 'ps',
