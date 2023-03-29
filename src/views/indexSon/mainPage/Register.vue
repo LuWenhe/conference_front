@@ -37,7 +37,7 @@
 <!--            </a><strong>&nbsp;</strong>(Chinese)</p>-->
 <!--        <p> &nbsp;</p>-->
         <el-row>
-          <div v-html="this.new.content" class="ql-editor"></div>
+          <div v-html="htmlContent" class="ql-editor"></div>
         </el-row>
       </el-card>
     </el-row>
@@ -46,7 +46,7 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getnew, getNewsList} from '@/Api/api'
+import {getOneNew, getNewsList} from '@/Api/api'
 
 export default {
   name: "Register",
@@ -55,18 +55,10 @@ export default {
     return{
       bigTitle: ['Register'],
       newList: [],
-      new: {},
+      htmlContent: '',
       tableData: [{
         items: 'Registration Fee',
         fee: '550 USD (3500 RMB)' ,
-      // }, {
-      //   items: 'Regular Registration(4 pages)',
-      //   fee: '490 USD/ paper (4 pages)',
-      // },
-      //   {
-      //     items: 'Student Registration',
-      //     fee: '440 USD/ paper (4 pages)',
-      //   }]
     }]
   }
   },
@@ -81,29 +73,24 @@ export default {
         newsCategoryId:38 , //限定新闻类别
         size: 5
       }
-      getNewsList(data)
-        .then(res => {
-          if (res.code === 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-
-        })
+      getNewsList(data).then(res => {
+        if (res.code === 200) {
+          this.newsList = res.data.records
+          this.getalone(this.newsList[0].id)
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     },
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
-      getnew(id)
-        .then(res => {
-          // console.log(res);
-          if (res.code === 200) {
-            this.new = res.data
-          }
-        })
-        .catch(error => {
-
-        })
+      getOneNew(id).then(res => {
+        if (res.code === 200) {
+          this.htmlContent = res.data.htmlContent
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 }

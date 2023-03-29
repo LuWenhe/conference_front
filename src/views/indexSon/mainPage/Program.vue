@@ -8,29 +8,6 @@
         <p style="text-align: justify;"><span style="color: #000000;">
           <strong>2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023) will be held on August, 2023 in Zhengzhou city, Henan province, China. </strong>&nbsp;The following information about the schedule is for your reference.</span></p>
         <p style="text-align: justify;"><span style="color: #000000;"><br></span></p>
-<!--        <el-table-->
-<!--          :data="tableData"-->
-<!--          :span-method="objectSpanMethod"-->
-<!--          border-->
-<!--          style="width: 100%;color: #000000;"-->
-<!--          :header-cell-style="{-->
-<!--             color: '#000000', }"-->
-<!--        class="protable">-->
-<!--          <el-table-column-->
-<!--            prop="data"-->
-<!--            label="Data"-->
-<!--            width="180">-->
-<!--          </el-table-column>-->
-<!--          <el-table-column-->
-<!--            prop="time"-->
-<!--            label="Time Slot">-->
-<!--          </el-table-column>-->
-<!--          <el-table-column-->
-<!--            prop="schedule"-->
-<!--            sortable-->
-<!--            label="Schedule">-->
-<!--          </el-table-column>-->
-<!--        </el-table>-->
         <table class="UEditorTable" data-sort="sortDisabled" width="1130">
           <tbody>
           <tr class="firstRow"><td rowspan="1" colspan="3" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-size: 18px; font-family: arial, helvetica, sans-serif;">
@@ -69,17 +46,16 @@
           </tbody>
         </table>
         <el-col>
-          <div v-html="this.new.content" class="ql-editor"></div>
+          <div v-html="htmlContent" class="ql-editor"></div>
         </el-col>
       </el-card>
     </el-row>
-
   </div>
 </template>
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getnew, getNewsList} from '@/Api/api'
+import {getOneNew, getNewsList} from '@/Api/api'
 
 export default {
   name: "Program",
@@ -88,7 +64,7 @@ export default {
     return {
       bigTitle: ['Program'],
       newList: [],
-      new: {},
+      htmlContent: '',
       // tableData: [{
       //   data: 'August 11',
       //   time: '13:00-17:00',
@@ -125,30 +101,25 @@ export default {
         newsCategoryId: 40, //限定新闻类别
         size: 5
       }
-      getNewsList(data)
-        .then(res => {
-          if (res.code === 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-
-        })
+      getNewsList(data).then(res => {
+        if (res.code === 200) {
+          this.newsList = res.data.records
+          this.getalone(this.newsList[0].id)
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
     //获取新闻内容,得到一个新闻对象
     getalone(id) {
-      getnew(id)
-        .then(res => {
-          // console.log(res);
-          if (res.code === 200) {
-            this.new = res.data
-          }
-        })
-        .catch(error => {
-
-        })
+      getOneNew(id).then(res => {
+        if (res.code === 200) {
+          this.htmlContent = res.data.htmlContent
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     },
     arraySpanMethod({row, column, rowIndex, columnIndex}) {
       if (rowIndex % 2 === 0) {
@@ -176,7 +147,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>
@@ -184,12 +154,14 @@ export default {
     margin: 0 auto;
     width: 80%;
   }
+
   .UEditorTable {
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     width: 100%;
     margin-bottom: 10px;
   }
+
   table {
     display: table;
     box-sizing: border-box;
@@ -198,11 +170,13 @@ export default {
     border-collapse: collapse;
     border-spacing: 0;
   }
+
   tr {
     display: table-row;
     vertical-align: inherit;
     border-color: inherit;
   }
+
   table td, table th {
     border-left: 1px solid #ccc;
     border-top: 1px solid #ccc;

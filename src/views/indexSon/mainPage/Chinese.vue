@@ -4,7 +4,7 @@
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
         <el-col>
-          <div v-html="this.new.content" class="ql-editor"></div>
+          <div v-html="htmlContent" class="ql-editor"></div>
         </el-col>
       </el-card>
     </el-row>
@@ -13,7 +13,8 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getnew, getNewsList} from '@/Api/api'
+import {getNewsList, getOneNew} from '@/Api/api'
+
 export default {
   name: "Chinese",
   components: {BigTitle},
@@ -21,47 +22,38 @@ export default {
     return{
       bigTitle: ['中文'],
       newList: [],
-      new: {}
+      htmlContent: ''
     }
   },
   created() {
-    this.getnews()
+    this.getNews()
   },
   methods: {
     //获取新闻列表
-    getnews() {
+    getNews() {
       const data = {
         current: 1,
         newsCategoryId:48 , //限定新闻类别
         size: 5
       }
-
       getNewsList(data).then(res => {
-          // console.log(res);
-          if (res.code === 200) {
-            this.newsList = res.data.records
-            this.getalone(this.newsList[0].id)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+        if (res.code === 200) {
+          this.newsList = res.data.records
+          this.getOneNewById(this.newsList[0].id)
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     },
-
-    //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      const data = id
-      getnew(data)
-        .then(res => {
-          // console.log(res);
-          if (res.code === 200) {
-            this.new = res.data
-            console.log(this.new.content)  //在控制台输出信息
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
+    // 根据新闻id获取新闻内容
+    getOneNewById(id) {
+      getOneNew(id).then(res => {
+        if (res.code === 200) {
+          this.htmlContent = res.data.htmlContent
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 

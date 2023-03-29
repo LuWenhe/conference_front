@@ -15,7 +15,7 @@ export const getMinTitle = data => {
     url: `/news_category/list/${data}`
   })
 }
-// 获取新闻列表
+// 获取新闻展示列表
 export const getNewsList = data => {
   return request({
     method: 'POST',
@@ -24,7 +24,7 @@ export const getNewsList = data => {
   })
 }
 // 获取只有一篇新闻
-export const getnew = id => {
+export const getOneNew = id => {
   return request({
     method: 'GET',
     url: `/news/main/${id}`
@@ -89,7 +89,7 @@ export const login = data => {
   return request({
     method: 'POST',
     url: '/login',
-    params: data
+    data: data
   })
 }
 // 获取普通管理员列表

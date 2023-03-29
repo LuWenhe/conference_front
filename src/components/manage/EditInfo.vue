@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import {addImg, getnew, update} from "@/Api/api"
+import {addImg, getOneNew, update} from "@/Api/api"
 export default {
   name: "EditInfo",
   data() {
@@ -65,7 +65,7 @@ export default {
     },
     // 获取需要修改的新闻的信息
     getNewInfo(id) {
-      getnew(id).then(res => {
+      getOneNew(id).then(res => {
         if (res.code === 200) {
           this.title = res.data.title
           this.releaseTime = res.data.releaseTime

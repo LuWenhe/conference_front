@@ -4,16 +4,16 @@
       <big-title :title=" bigTitle[0]"></big-title>
       <el-card class="box-card">
         <el-col>
-          <div v-html="this.content" class="ql-editor"></div>
+          <div v-html="htmlContent" class="ql-editor"></div>
         </el-col>
       </el-card>
     </el-row>
   </div>
 </template>
-<script>
 
+<script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getnew, getNewsList} from '@/Api/api'
+import {getOneNew, getNewsList} from '@/Api/api'
 
 export default {
   name: "Committee",
@@ -22,36 +22,35 @@ export default {
     return {
       bigTitle: ['committee'],
       newList: [],
-      content: {}
+      htmlContent: ""
     }
   },
   created() {
-    this.getnews()
+    this.getNews()
   },
   methods: {
     //获取新闻列表
-    getnews() {
-      const data = {
+    getNews() {
+      let data = {
         current: 1,
         newsCategoryId: 47, //限定新闻类别
         size: 5
       }
-
       // 得到新闻集合
       getNewsList(data).then(res => {
         if (res.code === 200) {
           let newId = res.data.records[0].id
-          this.getalone(newId)
+          this.getOneNewById(newId)
         }
       }).catch(error => {
         console.log(error)
       })
     },
-    //获取新闻内容,得到一个新闻对象
-    getalone(newId) {
-      getnew(newId).then(res => {
+    // 根据信息id获取信息内容
+    getOneNewById(newId) {
+      getOneNew(newId).then(res => {
         if (res.code === 200) {
-          this.content = res.data.htmlContent
+          this.htmlContent = res.data.htmlContent
         }
       }).catch(error => {
         console.log(error)
@@ -63,8 +62,8 @@ export default {
 </script>
 
 <style scoped>
-.committee-box {
-  margin: 0 auto;
-  width: 80%;
-}
+  .committee-box {
+    margin: 0 auto;
+    width: 80%;
+  }
 </style>

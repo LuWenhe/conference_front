@@ -8,7 +8,7 @@
       <el-form-item>
         <el-input v-model="loginForm.password" show-password prefix-icon="el-icon-lock" type="password" placeholder="密码"></el-input>
       </el-form-item>
-      <el-checkbox style="margin: 0px 0px 25px 0px">记住密码</el-checkbox>
+      <el-checkbox style="margin: 0 0 25px 0">记住密码</el-checkbox>
       <el-form-item>
         <el-button @click="Login" size="medium" type="primary">
           <span>登录</span>
@@ -28,23 +28,14 @@ export default {
     return {
       // 这是登录表单的数据绑定对象
       loginForm: {
-        username: 'rendong',
-        password: '123456'
+        username: '',
+        password: ''
       }
     }
   },
   methods: {
-    // 点击重置按钮，重置登录表单
-    resetLoginForm() {
-      this.$refs.loginFormRef.resetFields()
-    },
     Login() {
-      const data = {
-        username: this.loginForm.username,
-        password: this.loginForm.password
-      }
-      login(data).then(res => {
-        console.log(res)
+      login(this.loginForm).then(res => {
         if (res.code !== 200) {
           this.$message.error('登录失败！')
         } else if (res.data.role === '超级管理员') {
@@ -63,33 +54,35 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
-  background-image: url('../../assets/images/bg2.png');
-  background-size: 100% 100%;
-  // background-size: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  position: relative;
-  .login-form {
-    background-image: url('../../assets/images/inputBg.png');
-    border-radius: 6px;
-    position: absolute;
-    width: 490px;
-    height: 444px;
-    right: 250px;
-    padding: 45px 50px 0 50px;
-    .title {
-      height: 40px;
-      line-height: 40px;
-      font-size: 28px;
-      width: 100%;
-      font-family: PingFang SC;
-      color: #3360c2;
-      text-align: center;
-      margin-bottom: 35px;
-    }
+  .login {
+    background-image: url('~@/assets/images/bg2.png');
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    .login-form {
+      background-image: url('~@/assets/images/inputBg.png');
+      border-radius: 6px;
+      position: absolute;
+      width: 490px;
+      height: 444px;
+      right: 250px;
+      padding: 45px 50px 0 50px;
+
+      .title {
+        height: 40px;
+        line-height: 40px;
+        font-size: 28px;
+        width: 100%;
+        font-family: PingFang SC;
+        color: #3360c2;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
     .el-input {
       margin-bottom: 20px;
     }
@@ -102,6 +95,7 @@ export default {
       background-color: #3360c2d5;
     }
   }
+
   .el-login-fotter {
     position: fixed;
     bottom: 0;

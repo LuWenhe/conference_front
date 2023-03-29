@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { getNewsList, getnew, update, deleteNew, fuzzy } from '@/Api/api'
+import { getNewsList, getOneNew, update, deleteNew, fuzzy } from '@/Api/api'
 export default {
   data() {
     return {
@@ -286,7 +286,7 @@ export default {
     },
     //展示修改对话框
     showEditDialog(id) {
-      getnew(id).then(res => {
+      getOneNew(id).then(res => {
         if (res.code === 200) {
           this.editForm = res.data
         }

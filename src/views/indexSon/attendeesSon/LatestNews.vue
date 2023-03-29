@@ -25,12 +25,7 @@ export default {
       },
       titleId: 5
     }
-  },
-  created() {
-  },
-  methods: {
   }
-
 }
 </script>
 

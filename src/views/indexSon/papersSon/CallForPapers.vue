@@ -125,37 +125,33 @@ export default {
       },
       titleId: 4
     }
-  },
-  created() {
-  },
-  methods: {
   }
-
 }
 </script>
 
 <style scoped>
-.UEditorTable {
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  width: 100%;
-  margin-bottom: 10px;
-}
-table td, table th {
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  padding: 10px 25px;
-  word-break: break-word !important;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
-table {
-  border-collapse: collapse;
-  display: table;
-  box-sizing: border-box;
-  text-indent: initial;
-  border-spacing: 0px;
-  border-color: grey;
-}
+  .UEditorTable {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
+  table td, table th {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 10px 25px;
+    word-break: break-word !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  table {
+    border-collapse: collapse;
+    display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 0px;
+    border-color: grey;
+  }
 </style>

@@ -11,7 +11,7 @@
 
 <script>
 import BigTitle from "./BigTitle.vue"
-import {getMinTitle, getnew, getNewsList} from '@/Api/api'
+import {getMinTitle, getOneNew, getNewsList} from '@/Api/api'
 
 export default {
   name: "commonMain",
@@ -35,7 +35,6 @@ export default {
     }
   },
   created() {
-    console.log('this', this.resData, this.titleId)
     this.getTitle()
   },
   methods: {
@@ -72,7 +71,7 @@ export default {
     },
     //获取新闻内容,得到一个新闻对象
     getalone(newId) {
-      getnew(newId).then(res => {
+      getOneNew(newId).then(res => {
         if (res.code === 200) {
           this.content = res.data.htmlContent
         }

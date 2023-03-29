@@ -27,12 +27,7 @@ export default {
       },
       titleId: 4
     }
-  },
-  created() {
-  },
-  methods: {
   }
-
 }
 </script>
 

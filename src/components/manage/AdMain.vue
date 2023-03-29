@@ -5,9 +5,9 @@
       <el-col :span="4">
         <el-cascader v-model="value" :options="options" clearable filterable :getCheckedNodes="true" @change="handleChange"> </el-cascader>
       </el-col>
-      <el-col :span="5">
-        <el-button type="primary" icon="el-icon-edit" @click="goAdEdit()">点击对普通管理员进行管理</el-button>
-      </el-col>
+<!--      <el-col :span="5">-->
+<!--        <el-button type="primary" icon="el-icon-edit" @click="goAdEdit()">点击对普通管理员进行管理</el-button>-->
+<!--      </el-col>-->
     </el-row>
     <div>
       <el-card class="box-card">
@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { getNewsList, getnew, update, deleteNew, fuzzy } from '@/Api/api'
+import { getNewsList, getOneNew, update, deleteNew, fuzzy } from '@/Api/api'
 export default {
   data() {
     return {
@@ -295,7 +295,7 @@ export default {
     },
     //展示修改对话框
     showEditDialog(id) {
-      getnew(id).then(res => {
+      getOneNew(id).then(res => {
         // console.log(res);
         if (res.code === 200) {
           this.editForm = res.data
