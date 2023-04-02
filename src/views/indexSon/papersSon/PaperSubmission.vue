@@ -1,7 +1,7 @@
 <template>
   <div class="callForPapers-box">
     <el-row>
-      <common-main :resData="resData" :titleId="titleId"></common-main>
+      <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
     <el-row>
       <el-card>
@@ -26,23 +26,15 @@
 <script>
 
 import BigTitle from "@/components/common/BigTitle"
-import CommonMain from "@/components/common/CommonContent"
+import CommonContent from "@/components/common/CommonContent.vue"
 
 export default {
-  name: "CallForSpecialSessions",
-  components: {BigTitle,  CommonMain},
+  name: "PaperSubmission",
+  components: {CommonContent, BigTitle},
   data() {
-    return{
-      bigTitle: ['committee'],
-      newList: [],
-      new: {},
-      resData: {
-        current: 1,
-        newsCategoryId:31 , //限定新闻类别
-        size: 1,
-        index: 2
-      },
-      titleId: 4
+    return {
+      newsCategoryId: 31,
+      titleName: 'Paper Submission'
     }
   }
 }
@@ -71,7 +63,6 @@ export default {
     display: flex;
     align-items: center;
     font-size: 18px;
-    font-family: PingFangSC-Medium,PingFang SC;
     font-weight: 500;
     box-sizing: border-box;
     padding-right: 23px;

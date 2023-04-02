@@ -5,18 +5,16 @@
     </el-row>
   </div>
 </template>
+
 <script>
-
-import BigTitle from "@/components/common/BigTitle"
-import CommonContent from "@/components/common/CommonContent.vue";
-
+import CommonContent from "@/components/common/CommonContent.vue"
 export default {
-  name: "ImportantDates",
-  components: {CommonContent, BigTitle},
+  name: "Accommodation",
+  components: {CommonContent},
   data() {
     return{
-      newsCategoryId: 30,
-      titleName: 'Important Dates'
+      newsCategoryId: 35,
+      titleName: this.$options.name
     }
   }
 }

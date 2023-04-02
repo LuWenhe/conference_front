@@ -23,11 +23,17 @@ export const getNewsList = data => {
     params: data
   })
 }
-// 获取只有一篇新闻
-export const getOneNew = id => {
+// 根据新闻newId获取单篇篇新闻
+export const getOneNew = newId => {
   return request({
     method: 'GET',
-    url: `/news/main/${id}`
+    url: `/news/main/${newId}`
+  })
+}
+export const getOneNewByNewCategoryId = newCategoryId => {
+  return request({
+    method: 'GET',
+    url: `/news/get/${newCategoryId}`
   })
 }
 // 修改新闻

@@ -5,7 +5,7 @@
       <p>发布日期：{{ releaseTime }} 点击量：[ {{ hits }} ]</p>
     </div>
     <hr />
-    <div v-html="htmlContent" class="ql-editor"></div>
+    <div v-html="htmlContent"></div>
   </div>
 </template>
 <script>
@@ -54,10 +54,6 @@ export default {
     text-align: center;
     height: 35px;
     line-height: 35px;
-  }
-
-  .ql-editor {
-    padding: 12px 0px !important;
   }
 
   .ql-editor p {

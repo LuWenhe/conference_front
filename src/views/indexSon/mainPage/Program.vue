@@ -1,149 +1,69 @@
 <template>
   <div class="program-box">
     <el-row>
-      <big-title :title=" bigTitle[0]"></big-title>
-      <el-card class="box-card">
-        <ul class=" list-paddingleft-2" style="width: 1101.05px;"><p><strong>Agenda of</strong><strong>&nbsp;ICDSKE 2023</strong></p></ul>
-        <p style="text-align: justify;"><br style="white-space: normal;"></p>
-        <p style="text-align: justify;"><span style="color: #000000;">
-          <strong>2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023) will be held on August, 2023 in Zhengzhou city, Henan province, China. </strong>&nbsp;The following information about the schedule is for your reference.</span></p>
-        <p style="text-align: justify;"><span style="color: #000000;"><br></span></p>
-        <table class="UEditorTable" data-sort="sortDisabled" width="1130">
-          <tbody>
-          <tr class="firstRow"><td rowspan="1" colspan="3" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-size: 18px; font-family: arial, helvetica, sans-serif;">
-            <strong><strong style="white-space: normal;">
-            <strong style="text-align: justify;"></strong></strong>
-              <strong style="white-space: normal;">Schedule</strong></strong></span></td></tr>
-          <tr><td width="155" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-family: arial, helvetica, sans-serif;">August 11</span></td>
-            <td width="150" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-family: arial, helvetica, sans-serif;">13:00-17:00</span></td>
-            <td width="942" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-family: arial, helvetica, sans-serif;">Registration</span></td></tr>
-          <tr><td rowspan="4" colspan="1" width="155" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <span style="font-family: arial, helvetica, sans-serif;"><span style="font-family: arial, helvetica, sans-serif; text-align: -webkit-center; white-space: pre-wrap;">August 12</span><br></span></td>
-            <td width="150" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-family: arial, helvetica, sans-serif;">09:00-12:00</span></td>
-            <td width="942" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;"><span style="font-family: arial, helvetica, sans-serif;">Speeches of Keynote Speakers</span></td></tr>
-          <tr><td colspan="1" rowspan="1" width="158" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <span style="font-family: arial, helvetica, sans-serif;">12:00-14:00<br></span></td>
-            <td colspan="1" rowspan="1" width="628" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-              <p style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); white-space: normal;"><span style="font-family: arial, helvetica, sans-serif;">Lunch</span></p></td></tr>
-          <tr><td colspan="1" rowspan="1" width="158" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <span style="font-family: arial, helvetica, sans-serif;">14:00-17:30</span></td><td colspan="1" rowspan="1" width="628" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <p style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><span style="font-family: arial, helvetica, sans-serif;">Oral Presentations<span style="color: #FF0000; font-family: arial, helvetica, sans-serif;">
-            </span>
-            </span>
-            </p>
-          </td>
-          </tr>
-          <tr><td colspan="1" rowspan="1" width="158" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <span style="font-family: arial, helvetica, sans-serif;">17:30-18:00</span></td>
-            <td colspan="1" rowspan="1" width="628" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-              <p style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); white-space: normal;"><span style="font-family: arial, helvetica, sans-serif;">Banquet</span></p></td></tr>
-          <tr><td width="161" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-            <span style="font-family: arial, helvetica, sans-serif;"><span style="font-family: arial, helvetica, sans-serif; text-align: -webkit-center; white-space: pre-wrap;">August 13</span><br></span></td>
-            <td width="150" valign="middle" align="center" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-              <span style="font-family: arial, helvetica, sans-serif;">09:00-18:00</span></td>
-            <td width="942" valign="top" style="margin: 0px; padding: 3px 5px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); border-color: rgb(204, 204, 204); overflow-wrap: break-word; white-space: pre-wrap; word-break: break-all;">
-              <span style="font-family: arial, helvetica, sans-serif;">Academic Investigation</span></td></tr>
-          </tbody>
-        </table>
-        <el-col>
-          <div v-html="htmlContent" class="ql-editor"></div>
-        </el-col>
-      </el-card>
+      <big-title :title="titleName"></big-title>
+
+      <common-content :isNeed="false" :newsCategoryId="newsCategoryId" :titleName="titleName">
+        <template v-slot:top>
+          <div class="program-box-top">
+            <p class="program-title"><strong>{{topTitle}}</strong></p>
+            <p v-html="topContent">{{topContent}}</p>
+            <table>
+              <tbody>
+              <tr class="firstRow">
+                <td colspan="3">Schedule</td>
+              </tr>
+              <tr>
+                <td>August 11</td>
+                <td>13:00-17:00</td>
+                <td>Registration</td>
+              </tr>
+              <tr>
+                <td rowspan="4">August 12</td>
+                <td>09:00-12:00</td>
+                <td>Speeches of Keynote Speakers</td>
+              </tr>
+              <tr>
+                <td>12:00-14:00</td>
+                <td>Lunch</td>
+              </tr>
+              <tr>
+                <td>14:00-17:30</td>
+                <td>Oral Presentations</td>
+              </tr>
+              <tr>
+                <td>17:30-18:00</td>
+                <td>Banquet</td>
+              </tr>
+              <tr>
+                <td>August 13</td>
+                <td>09:00-18:00</td>
+                <td>Academic Investigation</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </template>
+      </common-content>
     </el-row>
   </div>
 </template>
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getOneNew, getNewsList} from '@/Api/api'
+import CommonContent from "@/components/common/CommonContent.vue";
 
 export default {
   name: "Program",
-  components: {BigTitle},
+  components: {CommonContent, BigTitle},
   data() {
     return {
-      bigTitle: ['Program'],
-      newList: [],
-      htmlContent: '',
-      // tableData: [{
-      //   data: 'August 11',
-      //   time: '13:00-17:00',
-      //   schedule: 'Registration',
-      //
-      // }, {
-      //   data: 'August 12',
-      //   time: '09:00-12:00',
-      //   schedule: 'Speeches of Keynote Speakers',
-      // }, {
-      //   data: 'August 12',
-      //   time: '12:00-14:00',
-      //   schedule: 'Lunch',
-      //
-      // }, {
-      //   data: 'August 12',
-      //   time: '14:00-18:00',
-      //   schedule: 'Lunch',
-      // }, {
-      //   data: 'October 16',
-      //   time: '09:00-18:00',
-      //   schedule: 'Academic Investigation',
-      // }]
-    }
-  },
-  created() {
-    this.getnews()
-  },
-  methods: {
-    //获取新闻列表
-    getnews() {
-      const data = {
-        current: 1,
-        newsCategoryId: 40, //限定新闻类别
-        size: 5
-      }
-      getNewsList(data).then(res => {
-        if (res.code === 200) {
-          this.newsList = res.data.records
-          this.getalone(this.newsList[0].id)
-        }
-      }).catch(error => {
-        console.log(error)
-      })
-    },
-
-    //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      getOneNew(id).then(res => {
-        if (res.code === 200) {
-          this.htmlContent = res.data.htmlContent
-        }
-      }).catch(error => {
-        console.log(error)
-      })
-    },
-    arraySpanMethod({row, column, rowIndex, columnIndex}) {
-      if (rowIndex % 2 === 0) {
-        if (columnIndex === 0) {
-          return [1, 2];
-        } else if (columnIndex === 1) {
-          return [0, 0];
-        }
-      }
-    },
-    objectSpanMethod({row, column, rowIndex, columnIndex}) {
-      if (columnIndex === 0) {
-        if (rowIndex % 2 === 0) {
-          return {
-            rowspan: 2,
-            colspan: 1
-          };
-        } else {
-          return {
-            rowspan: 0,
-            colspan: 0
-          }
-        }
-      }
+      topTitle: 'Agenda of ICDSKE 2023',
+      topContent: '<strong>2023 International Conference on Data Science and Knowledge Engineering (ICDSKE 2023)</strong>' +
+        'will be held on <strong>August, 2023</strong> in <strong>Zhengzhou city, Henan province, China</strong>. ' +
+        'The following information about the schedule is for your reference.',
+      newsCategoryId: 40,
+      titleName: 'Program'
     }
   }
 }
@@ -155,33 +75,26 @@ export default {
     width: 80%;
   }
 
-  .UEditorTable {
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 10px;
+  .program-title {
+    margin-bottom: 20px;
   }
 
   table {
-    display: table;
-    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0;
     text-indent: initial;
     border-color: grey;
     border-collapse: collapse;
     border-spacing: 0;
   }
 
-  tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
+  .firstRow {
+    text-align: center;
+    font-weight: bold;
   }
 
   table td, table th {
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     padding: 3px 18px !important;
   }
 </style>

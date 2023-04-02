@@ -1,95 +1,77 @@
 <template>
   <el-row>
-    <big-title :title="bigTitle[this.resData.index]"></big-title>
+    <el-row v-if="isNeed">
+      <big-title :title="titleName"></big-title>
+    </el-row>
     <el-card class="box-card">
-      <el-col>
-        <div v-html="this.content" class="ql-editor"></div>
-      </el-col>
+      <slot name="top"></slot>
+
+      <div v-if="htmlContent != null">
+        <div class="content" v-html="this.htmlContent"></div>
+      </div>
+
+      <slot name="bottom"></slot>
     </el-card>
   </el-row>
 </template>
 
 <script>
-import BigTitle from "./BigTitle.vue"
-import {getMinTitle, getOneNew, getNewsList} from '@/Api/api'
+import BigTitle from "@/components/common/BigTitle.vue"
+import {getOneNewByNewCategoryId} from '@/Api/api'
 
 export default {
-  name: "commonMain",
+  name: "CommonContent",
   components: {BigTitle},
   props: {
-    resData: {
-      type: Object,
-      default: {}
-    },
-    titleId: {
+    newsCategoryId: {
       type: Number,
+      default: 0
+    },
+    titleName: {
+      type: String,
       default: ''
+    },
+    isNeed: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
     return {
-      menuList: [],
-      newsList: [],
-      bigTitle: [],
-      content: {}
+      htmlContent: ''
     }
   },
   created() {
-    this.getTitle()
+    this.getOneNew(this.newsCategoryId)
   },
   methods: {
-    //获取小标题id
-    getTitle() {
-      getMinTitle(this.titleId).then(res => {
+    getOneNew(newCategoryId) {
+      getOneNewByNewCategoryId(newCategoryId).then(res => {
         if (res.code === 200) {
-          this.menuList = res.data
-          this.menuList.map(item => {
-            this.bigTitle.push(item.name)
-          })
-          this.getnews(this.menuList[this.resData.index])
+          this.htmlContent = res.data.htmlContent
         }
       }).catch(err => {
         console.log(err)
       })
-    },
-    //获取新闻列表
-    getnews(item) {
-      const data = {
-        current: 1,
-        newsCategoryId: item.id, //限定新闻类别
-        size: 5
-      }
-
-      getNewsList(data).then(res => {
-        if (res.code === 200) {
-          let newId = res.data.records[0].id
-          this.getalone(newId)
-        }
-      }).catch(error => {
-
-      })
-    },
-    //获取新闻内容,得到一个新闻对象
-    getalone(newId) {
-      getOneNew(newId).then(res => {
-        if (res.code === 200) {
-          this.content = res.data.htmlContent
-        }
-      }).catch(error => {
-
-      })
     }
   }
 }
-
-
 </script>
 
 <style scoped>
-.home-title span {
-  font-size: 24px;
-  font-weight: 500;
-  margin-left: 20px;
-  color: rgba(51, 51, 51, 1);
-}
+  .home-title span {
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 20px;
+    color: rgba(51, 51, 51, 1);
+  }
+
+  .content {
+    letter-spacing: 1px;
+    line-height: 25px;
+    white-space: pre-wrap;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    text-align: justify;
+    font-size: 16px;
+  }
 </style>

@@ -16,7 +16,7 @@ import KeynoteSpeakers from "../views/indexSon/speakersSon/KeynoteSpeakers.vue"
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
-import Accomodation from "@/views/indexSon/attendeesSon/Accomodation"
+import Accomodation from "@/views/indexSon/attendeesSon/Accommodation.vue"
 import LatestNews from "@/views/indexSon/attendeesSon/LatestNews"
 
 import AdEdit from "../components/manage/AdEdit"

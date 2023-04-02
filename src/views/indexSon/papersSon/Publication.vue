@@ -1,7 +1,7 @@
 <template>
   <div class="Publication-box">
     <el-row>
-      <common-main :resData="resData" :titleId="titleId"></common-main>
+      <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
   </div>
 </template>
@@ -9,23 +9,15 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle";
-import CommonMain from "@/components/common/CommonContent";
+import CommonContent from "@/components/common/CommonContent.vue";
 
 export default {
   name: "Publication",
-  components: {BigTitle,  CommonMain},
+  components: {CommonContent, BigTitle},
   data() {
     return{
-      bigTitle: ['publication'],
-      newList: [],
-      new: {},
-      resData: {
-        current: 1,
-        newsCategoryId:50 , //限定新闻类别
-        size: 1,
-        index: 3
-      },
-      titleId: 4
+      newsCategoryId: 50,
+      titleName: 'Publication'
     }
   }
 }

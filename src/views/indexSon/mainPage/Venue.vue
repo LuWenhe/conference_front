@@ -1,60 +1,21 @@
 <template>
   <div class="venue-box">
     <el-row>
-      <big-title :title=" bigTitle[0]"></big-title>
-      <el-card class="box-card">
-        <el-col>
-          <div v-html="htmlContent" class="ql-editor"></div>
-        </el-col>
-      </el-card>
+      <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
   </div>
 </template>
 
 <script>
-import BigTitle from "@/components/common/BigTitle.vue"
-import {getOneNew, getNewsList} from '@/Api/api'
+import CommonContent from "@/components/common/CommonContent.vue";
 
 export default {
   name: "Venue",
-  components: {BigTitle},
+  components: {CommonContent},
   data() {
-    return{
-      bigTitle: ['Conference Venue'],
-      newList: [],
-      htmlContent: ''
-    }
-  },
-  created() {
-    this.getnews()
-  },
-  methods: {
-    //获取新闻列表
-    getnews() {
-      const data = {
-        current: 1,
-        newsCategoryId:39 , //限定新闻类别
-        size: 5
-      }
-      getNewsList(data).then(res => {
-        if (res.code === 200) {
-          this.newsList = res.data.records
-          this.getalone(this.newsList[0].id)
-        }
-      }).catch(error => {
-        console.log(error)
-      })
-    },
-
-    //获取新闻内容,得到一个新闻对象
-    getalone(id) {
-      getOneNew(id).then(res => {
-        if (res.code === 200) {
-          this.htmlContent = res.data.htmlContent
-        }
-      }).catch(error => {
-        console.log(error)
-      })
+    return {
+      newsCategoryId: 39,
+      titleName: 'Conference Venue'
     }
   }
 }

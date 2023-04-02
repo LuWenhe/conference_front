@@ -1,30 +1,22 @@
 <template>
   <div class="callForPapers-box">
     <el-row>
-      <common-main :resData="resData" :titleId="titleId"></common-main>
+      <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
   </div>
 </template>
 <script>
 
 import BigTitle from "@/components/common/BigTitle"
-import CommonMain from "@/components/common/CommonContent"
+import CommonContent from "@/components/common/CommonContent.vue";
 
 export default {
   name: "InvitedSpeakers",
-  components: {BigTitle,  CommonMain},
+  components: {CommonContent, BigTitle},
   data() {
     return{
-      bigTitle: [],
-      newList: [],
-      new: {},
-      resData: {
-        current: 1,
-        newsCategoryId:28, //限定新闻类别
-        size: 1,
-        index: 1
-      },
-      titleId: 3
+      newsCategoryId: 28,
+      titleName: this.$options.name
     }
   }
 }
