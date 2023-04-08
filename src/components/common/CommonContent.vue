@@ -17,7 +17,7 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getOneNewByNewCategoryId} from '@/Api/api'
+import {getOneNewByNewCategoryId} from '@/network/news'
 
 export default {
   name: "CommonContent",
