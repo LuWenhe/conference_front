@@ -1,5 +1,5 @@
 <template>
-  <div class="Publication-box">
+  <div class="publication-box">
     <el-row>
       <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>

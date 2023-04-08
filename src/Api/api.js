@@ -1,21 +1,14 @@
 //封装路径请求
 import {request} from '@/network/request'
-// // 导航栏列表
-// export const getNavList = data => {
-//   return request({
-//     method: 'GET',
-//     url: '/news_type/all',
-//     params:data,
-//   })
-// }
-// 获取小标题
-export const getMinTitle = data => {
+
+// 根据新闻种类id获取小标题
+export const getMinTitle = newsTypeId => {
   return request({
     method: 'GET',
-    url: `/news_category/list/${data}`
+    url: `/news_category/list/${newsTypeId}`
   })
 }
-// 获取新闻展示列表
+// 分页查询指定小标题下的新闻列表
 export const getNewsList = data => {
   return request({
     method: 'POST',
@@ -23,36 +16,37 @@ export const getNewsList = data => {
     params: data
   })
 }
-// 根据新闻newId获取单篇篇新闻
-export const getOneNew = newId => {
+// 根据newsId获取单篇篇新闻内容
+export const getOneNew = newsId => {
   return request({
     method: 'GET',
-    url: `/news/main/${newId}`
+    url: `/news/main/${newsId}`
   })
 }
-export const getOneNewByNewCategoryId = newCategoryId => {
+// 根据newCategoryId获取单篇新闻内容
+export const getOneNewByNewCategoryId = newsCategoryId => {
   return request({
     method: 'GET',
-    url: `/news/get/${newCategoryId}`
+    url: `/news/get/${newsCategoryId}`
   })
 }
 // 修改新闻
-export const update = data => {
+export const update = newsObj => {
   return request({
     method: 'POST',
     url: '/news/update',
-    data: data
+    data: newsObj
   })
 }
 // 删除新闻
-export const deleteNew = data => {
+export const deleteNew = newsId => {
   return request({
     method: 'POST',
     url: '/news/delete',
-    params: data
+    params: newsId
   })
 }
-// 模糊查询
+// 根据新闻标题进行模糊查询
 export const fuzzy = data => {
   return request({
     method: 'POST',
@@ -60,15 +54,7 @@ export const fuzzy = data => {
     params: data
   })
 }
-// 添加新闻
-export const add = (data, fd) => {
-  return request({
-    method: 'POST',
-    url: '/news/add',
-    data: formData,
-    params: data
-  })
-}
+// 上传图片
 export const addImg = (formData) => {
   return request({
     method: 'POST',
@@ -76,6 +62,7 @@ export const addImg = (formData) => {
     data: formData
   })
 }
+// 删除图片
 export const deleteImg = (formData) => {
   return request({
     method: 'POST',
@@ -83,11 +70,12 @@ export const deleteImg = (formData) => {
     data: formData
   })
 }
-export const addContent = data => {
+// 添加新闻内容
+export const addContent = newsObj => {
   return request({
     method: 'POST',
     url: '/news/addContent',
-    data: data
+    data: newsObj
   })
 }
 // 登录

@@ -16,18 +16,8 @@ import KeynoteSpeakers from "../views/indexSon/speakersSon/KeynoteSpeakers.vue"
 import CallForPapers from "../views/indexSon/papersSon/CallForPapers"
 import ImportantDates from "../views/indexSon/papersSon/ImportantDates"
 import PaperSubmission from "../views/indexSon/papersSon/PaperSubmission"
-import Accomodation from "@/views/indexSon/attendeesSon/Accommodation.vue"
+import Accommodation from "@/views/indexSon/attendeesSon/Accommodation.vue"
 import LatestNews from "@/views/indexSon/attendeesSon/LatestNews"
-
-import AdEdit from "../components/manage/AdEdit"
-import AdMain from "../components/manage/AdMain"
-import AdminHome from "../components/manage/AdminHome"
-import Login from "../components/manage/Login"
-import Main from "../components/manage/Main"
-import Welcome from "../components/manage/Welcome"
-import News from "@/components/manage/News"
-import AddInfo from "@/components/manage/AddInfo"
-import EditInfo from "@/components/manage/EditInfo"
 import Publication from "@/views/indexSon/papersSon/Publication"
 
 Vue.use(Router)
@@ -105,7 +95,7 @@ const router = new Router({
             },
             {
               path: 'ad',
-              component: Accomodation
+              component: Accommodation
             },
             {
               path: 'ln',
@@ -134,45 +124,9 @@ const router = new Router({
           component: Contact
         }
       ]
-    },
-    {path: '/login', component: Login},
-    {
-      path: '/administrator',
-      component: AdminHome, //跳转到组件
-      children: [
-        {
-          path: 'welcome',
-          component: Welcome
-        },
-        {
-          path: 'main',
-          component: Main
-        },
-        {
-          path: 'news',
-          component: News
-        },
-        {
-          path: 'admain',
-          component: AdMain
-        },
-        {
-          path: 'adedit',
-          component: AdEdit
-        },
-        {
-          path: 'addInfo',
-          component: AddInfo
-        },
-        {
-          path: 'editInfo',
-          component: EditInfo
-        }
-      ]
     }
   ],
   mode: 'history'
 })
 
 export default router
-
