@@ -13,9 +13,9 @@
             </a>
            </el-col>
            <el-col class="col1">
-            <a class="fast" href="https://maifile.cn/est/d2406789732267/pdf" target="_blank">
+            <a class="fast" href="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines" target="_blank">
               <p class="co-title  color-change" id="button1" onmousemove="stopColor('1','button1')"
-                 onmouseout="stopColor('3','button1')" style="color: white;">Template Download</p>
+                 onmouseout="stopColor('3','button1')" style="color: white;"> LNCS Style Template</p>
             </a>
            </el-col>
         </el-row>
