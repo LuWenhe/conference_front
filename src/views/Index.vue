@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import CommonMenu from '../components/common/CommonMenu.vue'
+import CommonMenu from '@/components/common/CommonMenu.vue'
 export default {
   name: "Index",
   components: {
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       activeIndex: '1',
-      url: 'http://124.71.143.3:80'
+      url: 'https://www.icdske.com'
     };
   },
   methods: {
