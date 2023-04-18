@@ -80,7 +80,7 @@ export default {
     height: 48px;
     border-radius: 24px;
     justify-content: center;
-    padding-left: 27px;
+    padding-left: 26px;
     margin-bottom: 15px;
   }
 
