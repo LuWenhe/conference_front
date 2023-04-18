@@ -1,5 +1,5 @@
 <template>
-  <div class="callForPapers-box">
+  <div class="invited-speakers-box">
     <el-row>
       <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
@@ -16,7 +16,7 @@ export default {
   data() {
     return{
       newsCategoryId: 28,
-      titleName: this.$options.name
+      titleName: 'Invited Speakers'
     }
   }
 }

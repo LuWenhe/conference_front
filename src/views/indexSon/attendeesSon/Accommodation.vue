@@ -1,5 +1,5 @@
 <template>
-  <div class="callForPapers-box">
+  <div class="accommodation-box">
     <el-row>
       <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>

@@ -1,5 +1,5 @@
 <template>
-  <div class="callForPapers-box">
+  <div class="call-for-papers-box">
     <common-content :newsCategoryId="newsCategoryId" :titleName="titleName">
       <template v-slot:bottom>
         <p>1.Metaverse</p>

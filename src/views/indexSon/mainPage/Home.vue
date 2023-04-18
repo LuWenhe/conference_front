@@ -88,7 +88,7 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getMinTitle, getNewsList} from '@/Api/api'
+import {getMinTitle, getNewsList} from '@/network/news'
 import Papers from "@/views/indexSon/mainPage/Papers.vue";
 import CommonContent from "@/components/common/CommonContent.vue";
 

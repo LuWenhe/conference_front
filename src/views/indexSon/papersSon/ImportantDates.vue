@@ -1,5 +1,5 @@
 <template>
-  <div class="callForPapers-box">
+  <div class="important-dates-box">
     <el-row>
       <common-content :newsCategoryId="newsCategoryId" :titleName="titleName"></common-content>
     </el-row>
@@ -15,7 +15,7 @@ export default {
   components: {CommonContent, BigTitle},
   data() {
     return{
-      newsCategoryId: 30,
+      newsCategoryId: 43,
       titleName: 'Important Dates'
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="common-content">
     <el-row v-if="isNeed">
       <big-title :title="titleName"></big-title>
     </el-row>
@@ -17,7 +17,7 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import {getOneNewByNewCategoryId} from '@/Api/api'
+import {getOneNewByNewCategoryId} from '@/network/news'
 
 export default {
   name: "CommonContent",
@@ -59,13 +59,6 @@ export default {
 </script>
 
 <style scoped>
-  .home-title span {
-    font-size: 24px;
-    font-weight: 500;
-    margin-left: 20px;
-    color: rgba(51, 51, 51, 1);
-  }
-
   .content {
     letter-spacing: 1px;
     line-height: 25px;
