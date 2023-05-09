@@ -1,13 +1,14 @@
 <template>
   <el-row class="common-content">
+    <!-- 如果需要大标题 -->
     <el-row v-if="isNeed">
       <big-title :title="titleName"></big-title>
     </el-row>
     <el-card class="box-card">
-      <slot name="top"></slot>
+      <slot class="box-card-top" name="top"></slot>
 
       <div v-if="htmlContent != null">
-        <div class="content" v-html="this.htmlContent"></div>
+        <div class="content" v-html="htmlContent"></div>
       </div>
 
       <slot name="bottom"></slot>
@@ -17,11 +18,13 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
+import CommonImage from "@/components/common/CommonImage.vue"
+
 import {getOneNewByNewCategoryId} from '@/network/news'
 
 export default {
   name: "CommonContent",
-  components: {BigTitle},
+  components: {CommonImage, BigTitle},
   props: {
     newsCategoryId: {
       type: Number,

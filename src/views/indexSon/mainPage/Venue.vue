@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import CommonContent from "@/components/common/CommonContent.vue";
+import CommonContent from "@/components/common/CommonContent.vue"
 
 export default {
   name: "Venue",

@@ -77,11 +77,13 @@ const router = new Router({
             },
             {
               path: 'ps',
-              component: PaperSubmission
+              component: PaperSubmission,
+              alias: '/submission'
             },
             {
               path: 'pb',
-              component: Publication
+              component: Publication,
+              alias: '/publication'
             }
           ]
         },

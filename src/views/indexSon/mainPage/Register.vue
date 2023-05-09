@@ -39,7 +39,7 @@
 
 <script>
 import BigTitle from "@/components/common/BigTitle.vue"
-import CommonContent from "@/components/common/CommonContent.vue";
+import CommonContent from "@/components/common/CommonContent.vue"
 
 export default {
   name: "Register",

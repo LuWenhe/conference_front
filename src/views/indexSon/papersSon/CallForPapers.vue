@@ -95,7 +95,7 @@
 
 import BigTitle from "@/components/common/BigTitle.vue"
 import Papers from "@/views/indexSon/mainPage/Papers"
-import CommonContent from "@/components/common/CommonContent.vue";
+import CommonContent from "@/components/common/CommonContent.vue"
 
 export default {
   name: "CallForPapers",

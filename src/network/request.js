@@ -1,18 +1,19 @@
 import axios from 'axios'
-let is_baseURL = 'https://www.icdske.com:8085'
-//let is_baseURL = 'http://localhost:7070'
+// let is_baseURL = 'https://www.icdske.com:8085'
+// let is_baseURL = 'http://www.icdske.com:7070'
+let is_baseURL = 'http://localhost:7070'
 
 // 创建axios实例
 export function request(config) {
   const instance = axios.create({
     baseURL: is_baseURL,
-    // headers: { 'Content-Type': 'application/json' }
   })
 
   // 请求拦截器: 请求接口前需要进行拦截
   instance.interceptors.request.use(config => {
     config.headers.Authorization = window.sessionStorage.getItem('token')
 
+    // 如果是添加和更新信息, 需要改变请求头
     if (config.url === '/news/addContent' || config.url === '/news/update') {
       config.headers['Content-Type'] = 'application/json'
     }

@@ -9,6 +9,7 @@
     active-text-color="#ffd04b"
     router
   >
+    <!-- todo 目录需要从后端传入 -->
     <!-- <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.path">
         <span slot="title">{{item.label}}</span>
     </el-menu-item>
@@ -30,10 +31,9 @@
     <el-submenu index="4">
       <template slot="title">Papers</template>
       <el-menu-item index="/papers/cpf">Call For Papers</el-menu-item>
-      <el-menu-item index="/papers/ps">Paper Submission</el-menu-item>
-      <el-menu-item index="/papers/pb">Publication</el-menu-item>
+      <el-menu-item index="/submission">Paper Submission</el-menu-item>
+      <el-menu-item index="/publication">Publication</el-menu-item>
       <el-menu-item index="/papers/imd">Important Dates</el-menu-item>
-
     </el-submenu>
     <el-submenu index="5">
       <template slot="title">Attendees</template>
@@ -153,7 +153,6 @@ export default {
       // ],
     };
   },
-
   computed :{
     // noChildren() {
     //     return this.menuData.filter(item => !item.children)
@@ -166,7 +165,6 @@ export default {
   created(){
     // console.log('this',this.noChildren, this.hasChildren)
   },
-
   methods: {
     handleSelect(key, keyPath) {
 
