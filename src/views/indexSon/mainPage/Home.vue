@@ -9,13 +9,13 @@
       </el-carousel>
     </el-row>
     <!-- 首页下半部分 -->
-    <el-row class="home-box-bottom">
+    <el-row class="home-box-bottom" v-if="isDataLoaded1 && isDataLoaded2">
       <el-row v-for="(item, index) in newsCategoryObjs" :key="index" class="home-introduction-card">
         <!-- 如果存放的不是图片 -->
         <common-content v-if="!item.isImage" :newsCategoryId="item.id" :titleName="item.name"></common-content>
         <!-- 如果存放的是图片 -->
         <common-content v-else :newsCategoryId="item.id" :titleName="item.name">
-          <template v-slot:top>
+          <template v-slot:bottom>
             <el-row class="image-box">
               <el-row v-for="(imageObj, index) in item.imageObjArray" :key="index">
                 <common-image :imageObj="imageObj" :isOnlyImage="item.isOnlyImage"></common-image>
@@ -34,7 +34,7 @@ import Papers from "@/views/indexSon/mainPage/Papers.vue"
 import CommonContent from "@/components/common/CommonContent.vue"
 import CommonImage from "@/components/common/CommonImage.vue"
 
-import {getMinTitle, getNewsList} from '@/network/news'
+import {getMinTitle, getNewsList, getImagesByNewCategoryId} from '@/network/news'
 
 export default {
   name: "Home",
@@ -42,7 +42,10 @@ export default {
   data() {
     return {
       bannerList: [],
-      newsCategoryObjs: []
+      newsCategoryObjs: [],
+      isDataLoaded1: false,
+      isDataLoaded2: false,
+      count: 0
     }
   },
   created() {
@@ -69,75 +72,37 @@ export default {
         console.log(err)
       })
     },
-    // 获取小标题id
+    // 获取首页小标题以及下面的内容
     getTitle() {
-      const data = 1
+      let data = 1
 
       getMinTitle(data).then(res => {
         if (res.code === 200) {
           res.data.forEach(item => {
-            // 如果是Support和Journals则标记为图片
-            // todo 后面需要从后端传入
-            if (item.name === 'SCI Indexed Journals') {
-              item.isImage = true
-              item.isOnlyImage = false
+            let newsCategoryId = item.id
 
-              item.imageObjArray = [
-                {
-                  imageUrl: 'https://icdske.com/image/sci1.png',
-                  imageHref: 'https://www.techscience.com/journal/cmc',
-                  imageTitle: 'Computers, Materials & Continua',
-                  imageComment: 'ISSN:1546-2218'
-                },
-                {
-                  imageUrl: 'https://icdske.com/image/sci2.png',
-                  imageHref: 'https://www.techscience.com/journal/iasc',
-                  imageTitle: 'Intelligent Automation & Soft Computing',
-                  imageComment: 'ISSN:1079-8587'
-                },
-                {
-                  imageUrl: 'https://icdske.com/image/sci3.png',
-                  imageHref: 'https://www.techscience.com/journal/cmc',
-                  imageTitle: 'Computer Systems Science and Engineering',
-                  imageComment: 'ISSN:0267-6192'
-                },
-                {
-                  imageUrl: 'https://icdske.com/image/sci4.png',
-                  imageHref: 'https://www.mdpi.com/journal/mathematics',
-                  imageTitle: 'Mathematics',
-                  imageComment: 'ISSN:2227-7390'
-                },
-                {
-                  imageUrl: 'https://icdske.com/image/sci5.png',
-                  imageHref: 'https://www.mdpi.com/journal/atmosphere',
-                  imageTitle: 'Atmosphere',
-                  imageComment: 'ISSN:2073-4433'
-                }
-              ]
-            } else if (item.name === 'Support') {
-              item.isImage = true
-              item.isOnlyImage = true
+            // 如果是SCI Indexed Journals和Support需要获取图片
+            // 防止数据没加载完就渲染页面, 需要用两个isDataLoaded来解决页面渲染不完整的问题
+            if (newsCategoryId === 44) {
+              item.isImage = true         // 子标题下只包含图片内容
+              item.isOnlyImage = false    // 图片包含标题和介绍
 
-              item.imageObjArray = [
-                {
-                  imageUrl: 'https://www.icdske.com/image/e2b214e5-8e0a-4c49-9d6c-4dbe33ec8bcb.png'
-                },
-                {
-                  imageUrl: 'https://www.icdske.com/image/c8ce45a0-6f86-43b7-a42f-73b25c6c4c5b.png'
-                },
-                {
-                  imageUrl: 'https://www.icdske.com/image/0ee8e7be-9cbb-4d8d-a2ec-0d6b1362f69f.png'
-                },
-                {
-                  imageUrl: 'https://www.icdske.com/image/xindafangyunlogo.png'
-                },
-                {
-                  imageUrl: 'https://www.icdske.com/image/electronic.png'
-                },
-                {
-                  imageUrl: 'https://www.icdske.com/image/zhenggongcheng.png'
+              getImagesByNewCategoryId(newsCategoryId).then(res => {
+                if (res.code === 200) {
+                  item.imageObjArray = res.data
+                  this.isDataLoaded1 = true
                 }
-              ]
+              })
+            } else if (newsCategoryId === 46) {
+              item.isImage = true
+              item.isOnlyImage = true     // 图片不包含标题和介绍
+
+              getImagesByNewCategoryId(newsCategoryId).then(res => {
+                if (res.code === 200) {
+                  item.imageObjArray = res.data
+                  this.isDataLoaded2 = true
+                }
+              })
             }
 
             this.newsCategoryObjs.push(item)

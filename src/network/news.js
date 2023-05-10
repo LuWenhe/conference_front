@@ -30,3 +30,9 @@ export const getOneNewByNewCategoryId = newsCategoryId => {
     url: `/news/get/${newsCategoryId}`
   })
 }
+export const getImagesByNewCategoryId = newsCategoryId => {
+  return request({
+    method: 'GET',
+    url: `/getImages/${newsCategoryId}`
+  })
+}

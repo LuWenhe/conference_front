@@ -1,5 +1,6 @@
 <template>
   <el-row class="common-image">
+    <!-- 显示图片 -->
     <el-row class="image">
       <img :src="imageObj.imageUrl" :style="imageStyle" alt="">
     </el-row>
