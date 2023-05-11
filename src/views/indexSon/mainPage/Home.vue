@@ -119,7 +119,7 @@ export default {
 <style scoped>
   .home-carousel {
     width: 100%;
-    height: 480px;
+    height: 600px;
   }
 
   .carousel-img {

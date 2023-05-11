@@ -10,17 +10,6 @@
     router
   >
     <!-- todo 目录需要从后端传入 -->
-    <!-- <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.path">
-        <span slot="title">{{item.label}}</span>
-    </el-menu-item>
-    <el-submenu v-for="item in hasChildren" :key="item.label" :index="item.label" >
-        <template slot="title">
-            <span slot="title">{{item.label}}</span>
-        </template>
-        <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-            <el-menu-item :index="subItem.path">{{subItem.label}}</el-menu-item>
-        </el-menu-item-group>
-    </el-submenu> -->
     <el-menu-item index="/home">Home</el-menu-item>
     <el-menu-item index="/committee">Committee</el-menu-item>
     <el-submenu index="3">

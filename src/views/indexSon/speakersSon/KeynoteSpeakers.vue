@@ -9,12 +9,12 @@
 <script>
 import CommonContent from "@/components/common/CommonContent.vue"
 export default {
-  name: "Keynote Speakers",
+  name: "KeynoteSpeakers",
   components: {CommonContent},
   data() {
     return{
       newsCategoryId: 27,
-      titleName: this.$options.name
+      titleName: 'Keynote Speakers'
     }
   }
 }

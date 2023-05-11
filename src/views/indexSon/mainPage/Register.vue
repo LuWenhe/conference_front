@@ -10,24 +10,14 @@
             <el-table-column prop="item" label="Items"></el-table-column>
             <el-table-column prop="fee" label="Registration Fee"></el-table-column>
           </el-table>
-          <p style="color:red"><strong>Note:  </strong></p>
+          <p style="color:red"><strong>Note: </strong></p>
           &nbsp;
           <p><strong>Please fill in the online registration form after remittance  </strong></p>
           <p><strong>请您在汇款过后如实填写在线注册表单。 </strong></p>
           &nbsp;
-          <el-row :gutter="300" >
-            <el-col class="col1">
-              <a class="fast" href="https://jinshuju.net/f/z1Ii06" target="_blank">
-                <p class="co-title  color-change" id="button2" onmousemove="stopColor('1','button2')"
-                   onmouseout="stopColor('3','button2')" style="color: white;">在线中文注册表</p>
-              </a>
-            </el-col>
-            <el-col class="col1">
-              <a class="fast" href="https://jinshuju.net/f/DVV5iI" target="_blank">
-                <p class="co-title  color-change" id="button1" onmousemove="stopColor('1','button1')"
-                   onmouseout="stopColor('3','button1')" style="color: white;">English Registration Form</p>
-              </a>
-            </el-col>
+          <el-row class="button-group">
+            <a href="https://jinshuju.net/f/z1Ii06">在线中文注册表</a>
+            <a href="https://jinshuju.net/f/DVV5iI">English Registration Form</a>
           </el-row>
           &nbsp;
           &nbsp;
@@ -70,37 +60,21 @@ export default {
   .register-table {
     margin: 20px 0;
   }
-  a {
-    color: #333;
-    text-decoration: none;
+
+  .button-group {
+    display: flex;
   }
 
-  .fast > p {
+  .button-group a {
+    display: block;
     width: 270px;
     height: 48px;
-    border-radius: 24px;
-    justify-content: center;
-    padding-left: 26px;
-    margin-bottom: 15px;
-  }
-
-  .color-change {
-    background: #157CAB !important;
-  }
-
-  .co-title {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
+    background-color: #157cab;
+    color: #fff;
+    margin-right: 15px;
+    border-radius: 30px;
     font-weight: 500;
-    box-sizing: border-box;
-    padding-right: 23px;
-    min-width: 132px;
-  }
-
-  .col1{
-    width: 260px;
-    height: 48px;
-    padding-left: 5px;
+    text-align: center;
+    line-height: 48px;
   }
 </style>
