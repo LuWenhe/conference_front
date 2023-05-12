@@ -10,17 +10,20 @@
             <el-table-column prop="item" label="Items"></el-table-column>
             <el-table-column prop="fee" label="Registration Fee"></el-table-column>
           </el-table>
-          <p style="color:red"><strong>Note: </strong></p>
-          &nbsp;
-          <p><strong>Please fill in the online registration form after remittance  </strong></p>
-          <p><strong>请您在汇款过后如实填写在线注册表单。 </strong></p>
-          &nbsp;
+          <p>
+            <strong style="color: #ff0000">
+              Note:
+            </strong>
+            <br/><br/>
+            <strong>
+              Please fill in the online registration form after remittance <br/>
+              请您在汇款过后如实填写在线注册表单。
+            </strong>
+          </p>
           <el-row class="button-group">
             <a href="https://jinshuju.net/f/z1Ii06">在线中文注册表</a>
             <a href="https://jinshuju.net/f/DVV5iI">English Registration Form</a>
           </el-row>
-          &nbsp;
-          &nbsp;
         </template>
       </common-content>
     </el-row>
@@ -63,6 +66,8 @@ export default {
 
   .button-group {
     display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 
   .button-group a {
