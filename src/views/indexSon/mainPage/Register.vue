@@ -21,8 +21,8 @@
             </strong>
           </p>
           <el-row class="button-group">
-            <a href="https://jinshuju.net/f/z1Ii06">在线中文注册表</a>
-            <a href="https://jinshuju.net/f/DVV5iI">English Registration Form</a>
+            <a href="https://jinshuju.net/f/z1Ii06" target="_blank">在线中文注册表</a>
+            <a href="https://jinshuju.net/f/DVV5iI" target="_blank">English Registration Form</a>
           </el-row>
         </template>
       </common-content>
