@@ -13,33 +13,53 @@
               <tr class="firstRow">
                 <td colspan="3">Schedule</td>
               </tr>
+<!--              <tr>-->
+<!--                <td>August 11</td>-->
+<!--                <td>13:00-17:00</td>-->
+<!--                <td>Registration</td>-->
+<!--              </tr>-->
               <tr>
-                <td>August 11</td>
-                <td>13:00-17:00</td>
-                <td>Registration</td>
+                <td rowspan="9">August 13</td>
+                <td>09:00-09:30</td>
+                <td>Opening Ceremony</td>
               </tr>
               <tr>
-                <td rowspan="4">August 12</td>
-                <td>09:00-12:00</td>
-                <td>Speeches of Keynote Speakers</td>
+                <td>09:30-10:30</td>
+                <td>Parallel Sessions</td>
+              </tr>
+              <tr>
+                <td>10:30-10:45</td>
+                <td>Tea Break</td>
+              </tr>
+              <tr>
+                <td>10:45-12:00</td>
+                <td>Parallel Sessions</td>
               </tr>
               <tr>
                 <td>12:00-14:00</td>
                 <td>Lunch</td>
               </tr>
               <tr>
-                <td>14:00-17:30</td>
-                <td>Oral Presentations</td>
+                <td>14:00-15:30</td>
+                <td>Parallel Sessions</td>
+              </tr>
+              <tr>
+                <td>15:30-15:45</td>
+                <td>Tea Break</td>
+              </tr>
+              <tr>
+                <td>15:45-17:30</td>
+                <td>Parallel Sessions</td>
               </tr>
               <tr>
                 <td>17:30-18:00</td>
-                <td>Banquet</td>
+                <td>Closing Ceremony</td>
               </tr>
-              <tr>
-                <td>August 13</td>
-                <td>09:00-18:00</td>
-                <td>Academic Investigation</td>
-              </tr>
+<!--              <tr>-->
+<!--                <td>August 13</td>-->
+<!--                <td>09:00-18:00</td>-->
+<!--                <td>Academic Investigation</td>-->
+<!--              </tr>-->
               </tbody>
             </table>
           </div>
