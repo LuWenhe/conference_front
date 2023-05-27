@@ -5,7 +5,7 @@
       <big-title :title="titleName"></big-title>
     </el-row>
     <el-card class="box-card">
-      <slot class="box-card-top" name="top"></slot>
+      <slot name="top"></slot>
 
       <div v-if="htmlContent != null">
         <div class="content" v-html="htmlContent"></div>
@@ -65,7 +65,6 @@ export default {
   .content {
     letter-spacing: 1px;
     line-height: 25px;
-    white-space: pre-wrap;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     text-align: justify;
     font-size: 16px;
